@@ -1,0 +1,24 @@
+# Données brutes volumineuses
+dvf_2023.csv.gz
+dvf_2024.csv.gz
+dvf_2025.csv.gz
+dvf_clean.csv
+dvf_kde.json
+communes.geojson
+iris.geojson
+
+# Anciens fichiers remplacés
+dvf_2024_clean.csv
+dvf_2024_villes.csv
+population.csv
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# VS Code
+.vscode/
+
+# Streamlit
+.streamlit/secrets.toml

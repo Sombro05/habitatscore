@@ -1,0 +1,11 @@
+streamlit
+pandas
+pyarrow
+folium
+streamlit-folium
+scipy
+matplotlib
+branca
+fastapi
+uvicorn
+shapely

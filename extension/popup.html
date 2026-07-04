@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      width: 280px;
+      padding: 16px;
+      font-family: sans-serif;
+      font-size: 14px;
+    }
+    h2 { margin: 0 0 12px; font-size: 16px; }
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #E74C3C;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    button:hover { background: #C0392B; }
+    #status {
+      margin-top: 12px;
+      padding: 8px;
+      border-radius: 4px;
+      display: none;
+      font-size: 13px;
+    }
+    .ok  { background: #EAF3DE; color: #3B6D11; }
+    .err { background: #FDECEA; color: #922B21; }
+    .data { margin-top: 10px; font-size: 12px; color: #555; line-height: 1.8; }
+  </style>
+</head>
+<body>
+  <h2>🏠 ImmoScore</h2>
+  <p style="color:#666;margin:0 0 12px">Analyse cette annonce Leboncoin</p>
+  <button id="btn">Analyser cette annonce</button>
+  <div id="status"></div>
+  <div id="data" class="data"></div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
