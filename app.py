@@ -3,6 +3,12 @@ import folium
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
+from tracker import track, feedback
+import uuid
+
+# Session ID unique par visiteur
+if "session_id" not in st.session_state:
+    st.session_state.session_id = str(uuid.uuid4())
 from streamlit_folium import st_folium
 from data import charger_donnees, charger_kde, get_labels_uniques, get_row, get_prix_kde
 from scoring import scorer, calculer_frais_notaire, FRAIS_NOTAIRE_ANCIEN
@@ -195,6 +201,16 @@ if page == "Analyser un bien":
             st.pyplot(fig, use_container_width=True)
         else:
             st.caption("Pas assez de données pour afficher la distribution.")
+    
+    # Tracking analyse bien
+    track(
+        type="analyse_bien",
+        source="app",
+        ville=choix,
+        type_bien=type_bien,
+        score=res["score_pct"],
+        session_id=st.session_state.session_id,
+    )
 
 # ════════════════════════════════════════════
 # PAGE 2 — EXPLORER LE MARCHÉ
@@ -236,6 +252,9 @@ else:
         return geojson, data_ok, lookup_val
 
     carte, _ = charger_carte()
+
+    track(type="carte_ouverte", source="app",
+          session_id=st.session_state.session_id)
 
     type_carte = st.radio("Type de bien", ["Appartement", "Maison"], index=1, horizontal=True)
     metrique   = st.radio("Afficher", ["Prix au m² médian (€)", "Rendement estimé (%)"], index=1, horizontal=True)
