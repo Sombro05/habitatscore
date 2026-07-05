@@ -42,33 +42,12 @@ taille_avant = os.path.getsize("dvf_kde.json") / 1024 / 1024
 taille_apres = os.path.getsize("dvf_kde.json.gz") / 1024 / 1024
 print(f"  {taille_avant:.0f} Mo → {taille_apres:.0f} Mo")
 
-# ── 3. communes.geojson → communes_small.geojson ────────────────────────
-print("\nRéduction communes.geojson...")
-with open("communes.geojson", "r", encoding="utf-8") as f:
-    geo = json.load(f)
-
-def simplifier_polygone(coords, facteur=3):
-    """Garder 1 point sur facteur"""
-    return coords[::facteur]
-
-for feature in geo["features"]:
-    geom = feature["geometry"]
-    if geom is None:
-        continue
-    if geom["type"] == "Polygon":
-        geom["coordinates"] = [simplifier_polygone(ring) for ring in geom["coordinates"]]
-    elif geom["type"] == "MultiPolygon":
-        geom["coordinates"] = [
-            [simplifier_polygone(ring) for ring in poly]
-            for poly in geom["coordinates"]
-        ]
-
-with open("communes_small.geojson", "w", encoding="utf-8") as f:
-    json.dump(geo, f)
-
-taille_avant = os.path.getsize("communes.geojson") / 1024 / 1024
-taille_apres = os.path.getsize("communes_small.geojson") / 1024 / 1024
-print(f"  {taille_avant:.0f} Mo → {taille_apres:.0f} Mo")
+# ── 3. communes.geojson → communes_small.geojson (sans simplification) ──
+print("\nCopie communes.geojson sans simplification...")
+import shutil
+shutil.copy("communes.geojson", "communes_small.geojson")
+taille = os.path.getsize("communes_small.geojson") / 1024 / 1024
+print(f"  {taille:.0f} Mo (copie exacte)")
 
 print("\n✅ Réduction terminée")
 print(f"\nTaille totale estimée GitHub :")

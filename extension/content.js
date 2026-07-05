@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:8502";
+const API_URL = "https://immoscore-api-pppe.onrender.com";
 
 async function scorerAnnonce(ville, surface, prix, typeBien) {
   try {

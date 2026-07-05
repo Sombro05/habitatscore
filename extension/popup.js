@@ -51,7 +51,7 @@ document.getElementById("btn").addEventListener("click", () => {
       });
 
       // Ouvrir ImmoScore avec les données pré-remplies
-      const immoscoreUrl = `http://localhost:8501/?${params.toString()}`;
+      const immoscoreUrl = `https://immoscore.streamlit.app/?${params.toString()}`;
       chrome.tabs.create({ url: immoscoreUrl });
     });
   });

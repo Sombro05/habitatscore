@@ -1,11 +1,12 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 import pandas as pd
+import os
 from scoring import scorer, FRAIS_NOTAIRE_ANCIEN
+from tracker import track
 
 app = FastAPI()
 
-# Autoriser les requêtes depuis l'extension Chrome
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -13,13 +14,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Charger les données au démarrage
 print("Chargement des données...")
 villes = pd.read_csv("dvf_villes.csv")
 print(f"✅ {len(villes):,} entrées chargées")
 
 def trouver_ville(nom_ville: str, type_bien: str):
-    """Cherche la ville dans dvf_villes.csv avec normalisation."""
     import unicodedata, re
     def norm(t):
         t = str(t).lower().strip()
@@ -28,7 +27,6 @@ def trouver_ville(nom_ville: str, type_bien: str):
         t = re.sub(r"\bsaint\b", "st", t)
         t = re.sub(r"[-_'\s]+", " ", t)
         return t.strip()
-
     nom_norm = norm(nom_ville)
     filtre = villes[
         (villes["nom_normalise"].str.contains(nom_norm, na=False)) &
@@ -36,16 +34,16 @@ def trouver_ville(nom_ville: str, type_bien: str):
     ]
     if filtre.empty:
         return None
-    # Prendre la ville avec le plus de ventes
     return filtre.loc[filtre["nb_ventes"].idxmax()]
 
 @app.get("/score")
-def calculer_score(
-    ville:      str,
-    surface:    float,
-    prix:       float,
-    type_bien:  str = "Appartement",
-    usage:      str = "Résidence principale",
+async def calculer_score(
+    request: Request,
+    ville:     str,
+    surface:   float,
+    prix:      float,
+    type_bien: str = "Appartement",
+    usage:     str = "Résidence principale",
 ):
     row = trouver_ville(ville, type_bien)
     if row is None:
@@ -57,15 +55,22 @@ def calculer_score(
     frais_notaire   = round(prix * FRAIS_NOTAIRE_ANCIEN)
 
     res = scorer(
-        prix_achat=prix,
-        surface=surface,
-        type_bien=type_bien,
-        usage=usage,
-        prix_m2_median=prix_m2_median,
-        nb_ventes=nb_ventes,
+        prix_achat=prix, surface=surface,
+        type_bien=type_bien, usage=usage,
+        prix_m2_median=prix_m2_median, nb_ventes=nb_ventes,
         loyer_m2_estime=loyer_m2_estime,
-        frais_notaire=frais_notaire,
-        travaux=0,
+        frais_notaire=frais_notaire, travaux=0,
+    )
+
+    # Tracking
+    user_agent = request.headers.get("user-agent", "")
+    track(
+        type="score_annonce",
+        source="extension",
+        ville=row["nom_commune"],
+        type_bien=type_bien,
+        score=res["score_pct"],
+        user_agent=user_agent[:200] if user_agent else None,
     )
 
     return {

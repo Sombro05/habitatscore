@@ -9,3 +9,4 @@ branca
 fastapi
 uvicorn
 shapely
+supabase
