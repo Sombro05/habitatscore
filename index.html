@@ -2,21 +2,64 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HabitatScore - Analysez vos annonces immobilières</title>
   <style>
-    body { font-family: sans-serif; max-width: 800px; margin: 80px auto; padding: 0 20px; text-align: center; }
-    h1 { color: #1B3A5C; font-size: 2.5em; }
-    p { color: #444; font-size: 1.2em; line-height: 1.6; }
-    .btn { display: inline-block; margin-top: 30px; padding: 14px 30px; background: #27AE60; color: white; border-radius: 8px; text-decoration: none; font-size: 1.1em; }
-    .btn:hover { background: #1e8449; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f8f9fa; color: #333; }
+    header { background: #1B3A5C; padding: 20px 40px; display: flex; align-items: center; gap: 12px; }
+    header h1 { color: white; font-size: 1.4em; font-weight: 600; }
+    .hero { text-align: center; padding: 80px 20px 60px; }
+    .hero h2 { font-size: 2.4em; color: #1B3A5C; margin-bottom: 20px; line-height: 1.3; }
+    .hero p { font-size: 1.2em; color: #555; max-width: 600px; margin: 0 auto 40px; line-height: 1.7; }
+    .btn-primary { display: inline-block; padding: 16px 36px; background: #27AE60; color: white; border-radius: 8px; text-decoration: none; font-size: 1.1em; font-weight: 500; margin: 8px; }
+    .btn-secondary { display: inline-block; padding: 16px 36px; background: white; color: #1B3A5C; border: 2px solid #1B3A5C; border-radius: 8px; text-decoration: none; font-size: 1.1em; font-weight: 500; margin: 8px; }
+    .features { display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; padding: 60px 40px; background: white; }
+    .feature { max-width: 280px; text-align: center; padding: 30px 20px; border-radius: 12px; border: 1px solid #e0e0e0; }
+    .feature .icon { font-size: 2.5em; margin-bottom: 16px; }
+    .feature h3 { color: #1B3A5C; margin-bottom: 10px; font-size: 1.1em; }
+    .feature p { color: #666; font-size: 0.95em; line-height: 1.6; }
+    footer { text-align: center; padding: 30px; background: #1B3A5C; color: #aaa; font-size: 0.9em; }
+    footer a { color: #aaa; }
   </style>
 </head>
 <body>
-  <h1>🏠 HabitatScore</h1>
-  <p>Analysez vos annonces immobilières en temps réel.<br>
-  Obtenez un score de rentabilité instantané sur Leboncoin, SeLoger et plus encore.</p>
-  <a href="https://immoscore.streamlit.app" class="btn">Accéder à l'application</a>
-  <br><br>
-  <a href="/immo-scoring/privacy.html" style="color:#888;font-size:0.9em;">Politique de confidentialité</a>
+  <header>
+    <span style="font-size:1.8em">🏠</span>
+    <h1>HabitatScore</h1>
+  </header>
+
+  <div class="hero">
+    <h2>Analysez vos annonces immobilières en temps réel</h2>
+    <p>HabitatScore vous aide à identifier les bonnes affaires immobilières grâce à un score automatique basé sur les données du marché réel (2023-2025).</p>
+    <a href="https://immoscore.streamlit.app" class="btn-primary">Accéder à l'application</a>
+  </div>
+
+  <div class="features">
+    <div class="feature">
+      <div class="icon">📊</div>
+      <h3>Score instantané</h3>
+      <p>Chaque annonce reçoit un score de 0 à 100 basé sur le prix du marché local et le rendement locatif estimé.</p>
+    </div>
+    <div class="feature">
+      <div class="icon">🔍</div>
+      <h3>Extension Chrome</h3>
+      <p>Les scores s'affichent directement sur Leboncoin et SeLoger pendant que vous naviguez.</p>
+    </div>
+    <div class="feature">
+      <div class="icon">🗺️</div>
+      <h3>Carte nationale</h3>
+      <p>Visualisez les prix et rendements par commune sur toute la France.</p>
+    </div>
+    <div class="feature">
+      <div class="icon">📈</div>
+      <h3>Données réelles</h3>
+      <p>Basé sur 2,9 millions de ventes notariées et les loyers officiels ANIL 2025.</p>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2026 HabitatScore · <a href="/immo-scoring/privacy.html">Politique de confidentialité</a> · <a href="mailto:contact@habitatscore.fr">Contact</a></p>
+  </footer>
 </body>
 </html>
