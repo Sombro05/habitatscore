@@ -22,3 +22,8 @@ __pycache__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+Logo HabitatScore.png
+habitatscore-extension.zip
+*.zip
+*.png
