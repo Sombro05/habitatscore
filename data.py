@@ -4,17 +4,20 @@ import gzip
 import streamlit as st
 
 @st.cache_data
-def charger_donnees():
-    # Lire le parquet au lieu du CSV
-    df     = pd.read_parquet("dvf_clean.parquet")
+def charger_villes():
     villes = pd.read_csv("dvf_villes.csv")
-    return df, villes
+    return villes
 
 @st.cache_data
 def charger_kde():
-    # Lire le JSON gzippé
     with gzip.open("dvf_kde.json.gz", "rt", encoding="utf-8") as f:
         return json.load(f)
+
+@st.cache_data
+def charger_carte_data():
+    df    = pd.read_parquet("dvf_clean.parquet")
+    carte = pd.read_csv("dvf_carte.csv")
+    return df, carte
 
 def get_labels_uniques(villes):
     return sorted(villes["label"].unique().tolist())

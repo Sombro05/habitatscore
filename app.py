@@ -3,33 +3,30 @@ import folium
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
+from streamlit_folium import st_folium
+from scipy.stats import gaussian_kde as scipy_kde
 from scoring import scorer, calculer_frais_notaire, calculer_budget_dpe, FRAIS_NOTAIRE_ANCIEN, BUDGET_DPE
 from tracker import track, feedback
+from data import charger_villes, charger_kde, charger_carte_data, get_labels_uniques, get_row, get_prix_kde
 import uuid
 
-# Session ID unique par visiteur
+st.set_page_config(page_title="HabitatScore", page_icon="🏠", layout="wide")
+
 if "session_id" not in st.session_state:
     st.session_state.session_id = str(uuid.uuid4())
-from streamlit_folium import st_folium
-from data import charger_donnees, charger_kde, get_labels_uniques, get_row, get_prix_kde
-from scoring import scorer, calculer_frais_notaire, calculer_budget_dpe, FRAIS_NOTAIRE_ANCIEN
-from scipy.stats import gaussian_kde as scipy_kde
 
-st.set_page_config(page_title="ImmoScore", page_icon="🏠", layout="wide")
+villes   = charger_villes()
+kde_data = charger_kde()
 
-df, villes = charger_donnees()
-kde_data   = charger_kde()
-# Récupérer les paramètres URL transmis par l'extension Chrome
 qp = st.query_params
-qp_ville      = qp.get("ville", "")
-qp_prix       = int(qp.get("prix", 0))
-qp_surface    = int(qp.get("surface", 0))
-qp_type_bien  = qp.get("type_bien", "")
-qp_dpe        = qp.get("dpe", "")
+qp_ville     = qp.get("ville", "")
+qp_prix      = int(qp.get("prix", 0) or 0)
+qp_surface   = int(qp.get("surface", 0) or 0)
+qp_type_bien = qp.get("type_bien", "")
+qp_dpe       = qp.get("dpe", "")
 
-st.sidebar.title("🏠 ImmoScore")
+st.sidebar.title("🏠 HabitatScore")
 page = st.sidebar.radio("Navigation", ["Analyser un bien", "Explorer le marché"])
-
 # ════════════════════════════════════════════
 # PAGE 1 — ANALYSER UN BIEN
 # ════════════════════════════════════════════
@@ -235,6 +232,7 @@ if page == "Analyser un bien":
 # PAGE 2 — EXPLORER LE MARCHÉ
 # ════════════════════════════════════════════
 else:
+    df, carte = charger_carte_data()
     st.title("Explorer le marché")
     st.caption("Carte des rendements estimés par commune (2023–2025)")
 
