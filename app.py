@@ -3,6 +3,7 @@ import folium
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
+from scoring import scorer, calculer_frais_notaire, calculer_budget_dpe, FRAIS_NOTAIRE_ANCIEN, BUDGET_DPE
 from tracker import track, feedback
 import uuid
 
