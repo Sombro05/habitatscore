@@ -11,7 +11,7 @@ if "session_id" not in st.session_state:
     st.session_state.session_id = str(uuid.uuid4())
 from streamlit_folium import st_folium
 from data import charger_donnees, charger_kde, get_labels_uniques, get_row, get_prix_kde
-from scoring import scorer, calculer_frais_notaire, FRAIS_NOTAIRE_ANCIEN
+from scoring import scorer, calculer_frais_notaire, calculer_budget_dpe, FRAIS_NOTAIRE_ANCIEN
 from scipy.stats import gaussian_kde as scipy_kde
 
 st.set_page_config(page_title="ImmoScore", page_icon="🏠", layout="wide")
@@ -36,39 +36,23 @@ if page == "Analyser un bien":
     st.title("Analyser un bien")
 
     labels = get_labels_uniques(villes)
-    # Pré-sélection depuis l'extension Chrome
-    index_url = 0
-    if qp_ville:
-        import unicodedata, re
-        def norm(t):
-            t = str(t).lower().strip()
-            t = unicodedata.normalize("NFD", t)
-            t = "".join(c for c in t if unicodedata.category(c) != "Mn")
-            t = re.sub(r"\bsaint\b", "st", t)
-            t = re.sub(r"[-_'\s]+", " ", t)
-            return t.strip()
-        ville_norm = norm(qp_ville)
-        for i, l in enumerate([""] + labels):
-            if ville_norm in norm(l):
-                index_url = i
-                break
-
-    choix = st.selectbox(
+    choix  = st.selectbox(
         "Choisir une localisation",
-        options=[""] + labels, index=index_url,
+        options=[""] + labels, index=0,
         format_func=lambda x: "Tapez pour rechercher une ville..." if x == "" else x,
     )
     if not choix:
         st.stop()
 
     types_dispo = villes[villes["label"] == choix]["type_local"].unique().tolist()
-    type_index = 0
+    type_index  = 0
     if qp_type_bien in types_dispo:
         type_index = types_dispo.index(qp_type_bien)
     type_bien = st.radio("Type de bien", types_dispo, index=type_index, horizontal=True)
-    usage       = st.radio("Usage du bien",
-                           ["Location", "Résidence principale", "Achat / revente"],
-                           horizontal=True)
+
+    usage = st.radio("Usage du bien",
+                     ["Location", "Résidence principale", "Achat / revente"],
+                     horizontal=True)
 
     row = get_row(villes, choix, type_bien)
     prix_m2_median  = float(row["prix_m2_median"])
@@ -90,10 +74,30 @@ if page == "Analyser un bien":
 
     frais_notaire = st.number_input(
         f"Frais de notaire (€) — défaut {FRAIS_NOTAIRE_ANCIEN*100:.0f}%",
-        value=calculer_frais_notaire(prix_achat), step=100
+        value=calculer_frais_notaire(prix_achat),
+        step=100
     )
 
     travaux = st.number_input("Travaux (€)", value=0, step=500, min_value=0)
+
+    # DPE
+    dpe_options = ["", "A", "B", "C", "D", "E", "F", "G"]
+    dpe_defaut  = qp_dpe if qp_dpe in dpe_options else ""
+    dpe = st.selectbox(
+        "DPE (optionnel)",
+        options=dpe_options,
+        index=dpe_options.index(dpe_defaut),
+        format_func=lambda x: "Non renseigné" if x == "" else x,
+    )
+
+    # Budget DPE
+    budget_dpe_auto = int(calculer_budget_dpe(dpe, surface)) if dpe else 0
+    budget_dpe = st.number_input(
+        f"Budget rénovation énergétique (€) — estimé : {budget_dpe_auto:,} €",
+        value=budget_dpe_auto,
+        step=500,
+        min_value=0,
+    )
 
     loyer = None
     if usage == "Location":
@@ -102,7 +106,7 @@ if page == "Analyser un bien":
             value=int(loyer_m2_estime * surface), step=10
         )
 
-    cout_total_affiche = prix_achat + frais_notaire + travaux
+    cout_total_affiche = prix_achat + frais_notaire + travaux + budget_dpe
     st.caption(
         f"**{type_bien}s** · {choix} · "
         f"médiane {prix_m2_median:,.0f} €/m² · "
@@ -120,49 +124,76 @@ if page == "Analyser un bien":
         nb_ventes=nb_ventes,
         loyer_mensuel=loyer, frais_notaire=frais_notaire,
         travaux=travaux,
+        dpe=dpe,
+        budget_dpe_override=budget_dpe if budget_dpe != budget_dpe_auto else None,
+    )
+
+    track(
+        type="analyse_bien",
+        source="app",
+        ville=choix,
+        type_bien=type_bien,
+        score=res["score_pct"],
+        session_id=st.session_state.session_id,
     )
 
     st.divider()
 
     pct    = res["score_pct"]
-    emoji  = "🟢" if pct >= 60 else "🟡" if pct >= 40 else "🔴"
-    couleur_barre = "#27AE60" if pct >= 60 else "#E67E22" if pct >= 40 else "#E74C3C"
+    emoji  = "🟢" if pct >= 65 else "🟡" if pct >= 40 else "🔴"
     st.subheader(f"{emoji} Score : {pct}/100")
     st.progress(pct / 100)
 
-    # Métriques
+    # ── MÉTRIQUES ────────────────────────────
     if usage == "Location":
-        c1, c2, c3, c4, c5 = st.columns(5)
+        c1, c2, c3, c4, c5, c6 = st.columns(6)
         c1.metric("Prix au m²",               f"{res['prix_m2_achat_travaux']:,} €", f"{res['ecart']:+.1f}% vs marché")
-        c2.metric("Coût au m² (tout compris)", f"{res['prix_m2_tout_compris']:,} €", f"{res['ecart_tout_compris']:+.1f}% vs marché")
+        c2.metric("Coût au m² (tout compris)", f"{res['prix_m2_tout_compris']:,} €",  f"{res['ecart_tout_compris']:+.1f}% vs marché")
         c3.metric("Coût total",               f"{res['cout_total']:,} €")
-        delta_rdt = round(res['rdt_brut'] - res['rdt_neutre'], 2)
+        c4.metric("Rendement brut",           f"{res['rdt_brut']} %",)
         delta_rdt = round(res['rdt_brut'] - res['rdt_neutre'], 2)
         c4.metric("Rendement brut", f"{res['rdt_brut']} %",
                   f"{delta_rdt:+.2f}% vs neutre ville ({res['rdt_neutre']} %)")
         delta_loyer = loyer - int(loyer_m2_estime * surface)
         c5.metric("Loyer mensuel", f"{loyer:,} €", f"{delta_loyer:+,} € vs marché")
+        c6.metric("DPE", dpe if dpe else "—")
 
     elif usage == "Résidence principale":
-        c1, c2, c3 = st.columns(3)
+        c1, c2, c3,c4 = st.columns(4)
         c1.metric("Prix au m²",               f"{res['prix_m2_achat_travaux']:,} €", f"{res['ecart']:+.1f}% vs marché")
-        c2.metric("Coût au m² (tout compris)", f"{res['prix_m2_tout_compris']:,} €", f"{res['ecart_tout_compris']:+.1f}% vs marché")
+        c2.metric("Coût au m² (tout compris)", f"{res['prix_m2_tout_compris']:,} €",  f"{res['ecart_tout_compris']:+.1f}% vs marché")
         c3.metric("Coût total",               f"{res['cout_total']:,} €")
+        c4.metric("DPE", dpe if dpe else "—")
 
     else:  # Achat / revente
-        ecart_tc = (res['prix_m2_tout_compris'] - prix_m2_median) / prix_m2_median * 100
-        c1, c2, c3, c4 = st.columns(4)
+        c1, c2, c3, c4,c5 = st.columns(5)
         c1.metric("Prix au m²",               f"{res['prix_m2_achat_travaux']:,} €", f"{res['ecart']:+.1f}% vs marché")
-        c2.metric("Coût au m² (tout compris)", f"{res['prix_m2_tout_compris']:,} €", f"{res['ecart_tout_compris']:+.1f}% vs marché")
+        c2.metric("Coût au m² (tout compris)", f"{res['prix_m2_tout_compris']:,} €",  f"{res['ecart_tout_compris']:+.1f}% vs marché")
         c3.metric("Coût total",               f"{res['cout_total']:,} €")
         c4.metric("Frais notaire",            f"{res['frais_notaire']:,} €")
+        c5.metric("DPE", dpe if dpe else "—")
+
+    # Budget DPE
+    if res["budget_dpe"] > 0:
+        st.info(f"🏠 Budget rénovation DPE {dpe} estimé : {res['budget_dpe']:,} € ({BUDGET_DPE.get(dpe, 0):,} €/m²)")
 
     # ── DÉTAIL DU SCORE ───────────────────────
     st.divider()
 
+    scores = res["scores"]
+    noms   = {"rendement": "Rendement locatif", "prix": "Prix vs marché"}
+    poids  = res["poids"]
+
     col_bars, col_gauss = st.columns([1, 2])
 
     with col_bars:
+        for k, label in noms.items():
+            if k in scores:
+                v = scores[k]
+                st.metric(label, f"{v}/100", f"poids {poids[k]}")
+                st.progress(v / 100)
+
+    with col_gauss:
         commune  = row["nom_commune"]
         dept     = str(row["code_departement"])
         prix_raw = get_prix_kde(kde_data, commune, dept, type_bien)
@@ -183,9 +214,7 @@ if page == "Analyser un bien":
             ax.plot(x, y, color="#4C8BF5", linewidth=2)
             ax.fill_between(x, y, alpha=0.15, color="#4C8BF5")
 
-            prix_trace = (res["cout_total"] / surface
-                          if usage == "Achat / revente"
-                          else res["prix_m2_achat_travaux"])
+            prix_trace = res["prix_m2_achat_travaux"]
 
             ax.axvline(prix_trace,     color="#E74C3C", linewidth=2,
                        label=f"Votre bien : {prix_trace:,.0f} €/m²")
@@ -201,17 +230,6 @@ if page == "Analyser un bien":
             st.pyplot(fig, use_container_width=True)
         else:
             st.caption("Pas assez de données pour afficher la distribution.")
-    
-    # Tracking analyse bien
-    track(
-        type="analyse_bien",
-        source="app",
-        ville=choix,
-        type_bien=type_bien,
-        score=res["score_pct"],
-        session_id=st.session_state.session_id,
-    )
-
 # ════════════════════════════════════════════
 # PAGE 2 — EXPLORER LE MARCHÉ
 # ════════════════════════════════════════════

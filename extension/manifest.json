@@ -5,8 +5,9 @@
   "description": "Analyse les annonces immobilières en temps réel",
   "permissions": ["activeTab", "scripting"],
   "host_permissions": [
-    "https://*/*",
-    "http://*/*"
+    "https://www.leboncoin.fr/*",
+    "https://www.seloger.com/*",
+    "https://immoscore-api-pppe.onrender.com/*"
   ],
   "action": {
     "default_popup": "popup.html",
@@ -18,7 +19,10 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://*/*", "http://*/*"],
+      "matches": [
+        "https://www.leboncoin.fr/*",
+        "https://www.seloger.com/*"
+      ],
       "js": ["content.js"]
     }
   ]

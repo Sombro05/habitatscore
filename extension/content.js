@@ -1,8 +1,11 @@
 const API_URL = "https://immoscore-api-pppe.onrender.com";
 
-async function scorerAnnonce(ville, surface, prix, typeBien) {
+async function scorerAnnonce(ville, surface, prix, typeBien, dpe) {
   try {
-    const params = new URLSearchParams({ ville, surface, prix, type_bien: typeBien });
+    const params = new URLSearchParams({
+      ville, surface, prix, type_bien: typeBien, 
+      dpe: dpe || "E"  // E par défaut si non renseigné
+    });
     const res = await fetch(`${API_URL}/score?${params}`);
     if (!res.ok) return null;
     return await res.json();
@@ -81,7 +84,15 @@ function extraireInfoCarte(carte) {
   const typeBien = (texteLower.includes("maison") || texteLower.includes("villa"))
     ? "Maison" : "Appartement";
 
-  return { prix, surface, ville, typeBien };
+  // DPE
+  const dpeImg = carte.querySelector('img[alt*="nergie"]');
+  let dpe = null;
+  if (dpeImg) {
+    const dpeMatch = dpeImg.alt.match(/[A-G]/);
+    if (dpeMatch) dpe = dpeMatch[0];
+  }
+
+  return { prix, surface, ville, typeBien, dpe };
 }
 
 function ajouterBadge(carte, data) {
@@ -227,7 +238,7 @@ async function analyserToutesLesCartes() {
     if (style.position === "static") carte.style.position = "relative";
     carte.appendChild(badgeLoad);
 
-    const result = await scorerAnnonce(info.ville, info.surface, info.prix, info.typeBien);
+    const result = await scorerAnnonce(info.ville, info.surface, info.prix, info.typeBien, info.dpe);
     badgeLoad.remove();
     if (result && !result.erreur) ajouterBadge(carte, result);
   }
@@ -340,9 +351,12 @@ function extraireAnnonce() {
       if (dpeMatch) data.dpe = dpeMatch[1].toUpperCase();
     }
   } else {
-    const dpeMatch = allText.match(/classe\s+énergie\s*[:\s]*([A-G])/i) ||
-                     allText.match(/DPE\s*[:\s]*([A-G])/i);
-    if (dpeMatch) data.dpe = dpeMatch[1].toUpperCase();
+    // DPE depuis la fiche annonce (élément actif = plus grand)
+  const dpeEl = document.querySelector('[title="Classe énergie"] .h-sz-24') ||
+                document.querySelector('[title="Classe énergie"] .h-sz-32');
+  if (dpeEl && /^[A-G]$/.test(dpeEl.innerText.trim())) {
+    data.dpe = dpeEl.innerText.trim();
+  }
   }
 
   return data;

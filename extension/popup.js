@@ -51,7 +51,7 @@ document.getElementById("btn").addEventListener("click", () => {
       });
 
       // Ouvrir ImmoScore avec les données pré-remplies
-      const immoscoreUrl = `https://immoscore.streamlit.app/?${params.toString()}`;
+      const immoscoreUrl = `https://habitatscore.streamlit.app/?${params.toString()}`;
       chrome.tabs.create({ url: immoscoreUrl });
     });
   });
