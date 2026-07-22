@@ -6,6 +6,7 @@ dvf_clean.csv
 dvf_kde.json
 communes.geojson
 iris.geojson
+"Nouvelle conversation.txt"
 
 # Anciens fichiers remplacés
 dvf_2024_clean.csv
@@ -23,8 +24,13 @@ __pycache__/
 # Streamlit
 .streamlit/secrets.toml
 
+# Autre Fichier
 Logo HabitatScore.png
 habitatscore-extension.zip
 *.zip
 *.png
 0*.py
+11*.py
+
+CNAME
+
