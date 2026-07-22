@@ -125,6 +125,14 @@ function ajouterBadge(carte, data) {
 
 function creerBarreFiltrage() {
   if (document.getElementById("immoscore-barre")) return;
+  
+  // Afficher uniquement sur les pages de recherche immobilière Leboncoin
+  const url = window.location.href;
+  const estListeImmo = (
+    (url.includes("leboncoin.fr/recherche") && url.includes("category=9")) ||
+    (url.includes("seloger.com") && !url.includes("/annonce/"))
+  );
+  if (!estListeImmo) return;
 
   const barre = document.createElement("div");
   barre.id = "immoscore-barre";
