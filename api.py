@@ -84,6 +84,8 @@ async def calculer_score(
         "dept":           row["dept_affiche"],
     }
 
-@app.get("/health")
+from fastapi import Response
+
+@app.api_route("/health", methods=["GET", "HEAD"])
 def health():
     return {"status": "ok"}

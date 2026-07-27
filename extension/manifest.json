@@ -3,7 +3,7 @@
   "name": "HabitatScore",
   "version": "1.0",
   "description": "Analyse les annonces immobilières en temps réel",
-  "permissions": ["activeTab", "scripting"],
+  "permissions": ["activeTab"],
   "host_permissions": [
     "https://www.leboncoin.fr/*",
     "https://www.seloger.com/*",
