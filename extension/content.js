@@ -96,10 +96,10 @@ function extraireInfoCarte(carte) {
 }
 
 function ajouterBadge(carte, data) {
-  carte.querySelectorAll(".immoscore-badge").forEach(b => b.remove());
+  carte.querySelectorAll(".habitatscore-badge").forEach(b => b.remove());
 
   const badge = document.createElement("div");
-  badge.className = "immoscore-badge";
+  badge.className = "habitatscore-badge";
   badge.style.cssText = `
     position: absolute; top: 8px; right: 8px;
     background: ${couleurScore(data.score)};
@@ -124,7 +124,7 @@ function ajouterBadge(carte, data) {
 }
 
 function creerBarreFiltrage() {
-  if (document.getElementById("immoscore-barre")) return;
+  if (document.getElementById("habitatscore-barre")) return;
   
   // Afficher uniquement sur les pages de recherche immobilière Leboncoin
   const url = window.location.href;
@@ -135,7 +135,7 @@ function creerBarreFiltrage() {
   if (!estListeImmo) return;
 
   const barre = document.createElement("div");
-  barre.id = "immoscore-barre";
+  barre.id = "habitatscore-barre";
   barre.style.cssText = `
     position: fixed; top: 60px; right: 16px; z-index: 99999;
     background: white; border: 1px solid #ddd; border-radius: 10px;
@@ -146,12 +146,12 @@ function creerBarreFiltrage() {
 
   barre.innerHTML = `
     <div style="display:flex;align-items:center;margin-bottom:8px;cursor:grab">
-      <span style="font-weight:600">🏠 ImmoScore</span>
+      <span style="font-weight:600">🏠 HabitatScore</span>
     </div>
-    <label style="font-size:12px;color:#444">Score minimum : <b id="immoscore-valeur">0</b>/100</label>
-    <input type="range" id="immoscore-slider" min="0" max="100" value="0"
+    <label style="font-size:12px;color:#444">Score minimum : <b id="habitatscore-valeur">0</b>/100</label>
+    <input type="range" id="habitatscore-slider" min="0" max="100" value="0"
       style="width:100%;margin:6px 0;accent-color:#27AE60;cursor:pointer">
-    <button id="immoscore-reset" style="
+    <button id="habitatscore-reset" style="
       width:100%;padding:5px;border:1px solid #ddd;border-radius:6px;
       background:white;cursor:pointer;font-size:12px;margin-top:4px">
       Tout afficher
@@ -160,15 +160,15 @@ function creerBarreFiltrage() {
 
   document.body.appendChild(barre);
 
-  const slider = document.getElementById("immoscore-slider");
-  const valeur = document.getElementById("immoscore-valeur");
+  const slider = document.getElementById("habitatscore-slider");
+  const valeur = document.getElementById("habitatscore-valeur");
 
   slider.addEventListener("input", () => {
     valeur.innerText = slider.value;
     appliquerFiltre(parseInt(slider.value));
   });
 
-  document.getElementById("immoscore-reset").addEventListener("click", () => {
+  document.getElementById("habitatscore-reset").addEventListener("click", () => {
     slider.value = 0;
     valeur.innerText = "0";
     appliquerFiltre(0);
@@ -177,7 +177,7 @@ function creerBarreFiltrage() {
   // Drag & drop
   let isDragging = false, startX, startY, startLeft, startTop;
   barre.addEventListener("mousedown", (e) => {
-    if (e.target === slider || e.target.id === "immoscore-reset") return;
+    if (e.target === slider || e.target.id === "habitatscore-reset") return;
     isDragging = true;
     startX = e.clientX; startY = e.clientY;
     const rect = barre.getBoundingClientRect();
@@ -203,7 +203,7 @@ function appliquerFiltre(scoreMin) {
   const cartes = extraireCartes();
 
   cartes.forEach(carte => {
-    const badge = carte.querySelector(".immoscore-badge");
+    const badge = carte.querySelector(".habitatscore-badge");
     if (!badge) { carte.style.display = ""; return; }
 
     const scoreText = badge.querySelector("span")?.innerText || "0";
@@ -228,12 +228,12 @@ async function analyserToutesLesCartes() {
   creerBarreFiltrage();
 
   for (const carte of cartes) {
-    if (carte.querySelector(".immoscore-badge")) continue;
+    if (carte.querySelector(".habitatscore-badge")) continue;
     const info = extraireInfoCarte(carte);
     if (!info.prix || !info.surface || !info.ville) continue;
 
     const badgeLoad = document.createElement("div");
-    badgeLoad.className = "immoscore-badge";
+    badgeLoad.className = "habitatscore-badge";
     badgeLoad.style.cssText = `
       position: absolute; top: 8px; right: 8px;
       background: #95a5a6; color: white;
@@ -251,7 +251,7 @@ async function analyserToutesLesCartes() {
     if (result && !result.erreur) ajouterBadge(carte, result);
   }
 
-  const slider = document.getElementById("immoscore-slider");
+  const slider = document.getElementById("habitatscore-slider");
   if (slider && parseInt(slider.value) > 0) {
     appliquerFiltre(parseInt(slider.value));
   }
@@ -270,7 +270,7 @@ const observer = new MutationObserver(() => {
     const sel = getSiteName() ? SELECTEURS[getSiteName()] : null;
     if (!sel) return;
     const sansBadge = [...document.querySelectorAll(sel)]
-      .filter(c => !c.querySelector(".immoscore-badge"));
+      .filter(c => !c.querySelector(".habitatscore-badge"));
     if (sansBadge.length > 0) analyserToutesLesCartes();
   }, 1000);
 });
