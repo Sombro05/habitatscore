@@ -25,8 +25,16 @@ qp_surface   = int(qp.get("surface", 0) or 0)
 qp_type_bien = qp.get("type_bien", "")
 qp_dpe       = qp.get("dpe", "")
 
+# Forcer la page via URL
+qp_page = qp.get("page", "")
+if qp_page == "carte":
+    page_defaut = "Explorer le marché"
+else:
+    page_defaut = "Analyser un bien"
+
 st.sidebar.title("🏠 HabitatScore")
-page = st.sidebar.radio("Navigation", ["Analyser un bien", "Explorer le marché"])
+page = st.sidebar.radio("Navigation", ["Analyser un bien", "Explorer le marché"],
+                        index=1 if page_defaut == "Explorer le marché" else 0)
 # ════════════════════════════════════════════
 # PAGE 1 — ANALYSER UN BIEN
 # ════════════════════════════════════════════
