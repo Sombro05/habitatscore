@@ -27,14 +27,13 @@ qp_dpe       = qp.get("dpe", "")
 
 # Forcer la page via URL
 qp_page = qp.get("page", "")
-if qp_page == "carte":
-    page_defaut = "Explorer le marché"
-else:
-    page_defaut = "Analyser un bien"
+if qp_page == "carte" and "page_forcee" not in st.session_state:
+    st.session_state["page_forcee"] = "Explorer le marché"
 
 st.sidebar.title("🏠 HabitatScore")
+index_defaut = 1 if st.session_state.get("page_forcee") == "Explorer le marché" else 0
 page = st.sidebar.radio("Navigation", ["Analyser un bien", "Explorer le marché"],
-                        index=1 if page_defaut == "Explorer le marché" else 0)
+                        index=index_defaut)
 # ════════════════════════════════════════════
 # PAGE 1 — ANALYSER UN BIEN
 # ════════════════════════════════════════════
