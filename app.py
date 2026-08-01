@@ -30,6 +30,12 @@ qp_page = qp.get("page", "")
 if qp_page == "carte" and "page_forcee" not in st.session_state:
     st.session_state["page_forcee"] = "Explorer le marché"
 
+@st.cache_data
+def charger_geojson_cache(type_local, col_val):
+    nom = f"geojson_cache/{type_local}_{col_val}.json"
+    with open(nom, "r", encoding="utf-8") as f:
+        return json.load(f)
+    
 st.sidebar.title("🏠 HabitatScore")
 index_defaut = 1 if st.session_state.get("page_forcee") == "Explorer le marché" else 0
 page = st.sidebar.radio("Navigation", ["Analyser un bien", "Explorer le marché"],
@@ -239,43 +245,14 @@ if page == "Analyser un bien":
 # PAGE 2 — EXPLORER LE MARCHÉ
 # ════════════════════════════════════════════
 else:
-    df, carte = charger_carte_data()
     st.title("Explorer le marché")
     st.caption("Carte des rendements estimés par commune (2023–2025)")
 
     import json
     import branca.colormap as cm
-    import copy
+    from data import charger_geojson_cache, charger_carte_data
 
-    @st.cache_data
-    def charger_carte():
-        import pandas as pd
-        carte = pd.read_csv("dvf_carte.csv", dtype={"code_commune": str})
-        with open("communes_small.geojson", "r", encoding="utf-8") as f:
-            geojson = json.load(f)
-        return carte, geojson
-
-    @st.cache_data
-    def enrichir_geojson(type_carte, col_val):
-        import pandas as pd, copy
-        carte, geojson = charger_carte()
-        geojson = copy.deepcopy(geojson)
-
-        data_ok     = carte[carte["type_local"] == type_carte].copy()
-        lookup_val  = data_ok.set_index("code_commune")[col_val].to_dict()
-        lookup_rdt  = data_ok.set_index("code_commune")["rendement_median"].to_dict()
-        lookup_prix = data_ok.set_index("code_commune")["prix_m2_median"].to_dict()
-        lookup_loy  = data_ok.set_index("code_commune")["loyer_m2_estime"].to_dict()
-
-        for feature in geojson["features"]:
-            code = str(feature["properties"].get("code", "")).zfill(5)
-            feature["properties"]["rendement"] = f"{lookup_rdt[code]:.2f} %"      if code in lookup_rdt  else "—"
-            feature["properties"]["prix_m2"]   = f"{lookup_prix[code]:,.0f} €/m²" if code in lookup_prix else "—"
-            feature["properties"]["loyer_m2"]  = f"{lookup_loy[code]:.2f} €/m²"   if code in lookup_loy  else "—"
-
-        return geojson, data_ok, lookup_val
-
-    carte, _ = charger_carte()
+    df, carte = charger_carte_data()
 
     track(type="carte_ouverte", source="app",
           session_id=st.session_state.session_id)
@@ -286,7 +263,11 @@ else:
     col_val = "prix_m2_median" if metrique == "Prix au m² médian (€)" else "rendement_median"
     legende = "Prix €/m²"      if metrique == "Prix au m² médian (€)" else "Rendement (%)"
 
-    geojson, data_ok, lookup = enrichir_geojson(type_carte, col_val)
+    # Charger le GeoJSON pré-généré
+    geojson = charger_geojson_cache(type_carte, col_val)
+
+    data_ok = carte[carte["type_local"] == type_carte].copy()
+    lookup  = data_ok.set_index("code_commune")[col_val].to_dict()
 
     val_min = data_ok[col_val].quantile(0.05)
     val_max = data_ok[col_val].quantile(0.95)
@@ -302,8 +283,7 @@ else:
     )
 
     def style_fn(feature):
-        code = str(feature["properties"].get("code", "")).zfill(5)
-        val  = lookup.get(code)
+        val = feature["properties"].get("val")
         if val is None:
             return {"fillColor": "#cccccc", "fillOpacity": 0.15,
                     "color": "#ffffff", "weight": 0.3}
@@ -332,4 +312,4 @@ else:
     ).add_to(m)
 
     colormap.add_to(m)
-    st_folium(m, width="100%", height=800, returned_objects=[])
+    st_folium(m, width="100%", height=600, returned_objects=[])
