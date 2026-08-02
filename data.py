@@ -14,6 +14,12 @@ def charger_kde():
         return json.load(f)
 
 @st.cache_data
+def charger_geojson_cache(type_local, col_val):
+    nom = f"geojson_cache/{type_local}_{col_val}.json"
+    with open(nom, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+@st.cache_data
 def charger_carte_data():
     df    = pd.read_parquet("dvf_clean.parquet")
     carte = pd.read_csv("dvf_carte.csv")
