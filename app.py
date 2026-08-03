@@ -7,7 +7,7 @@ from streamlit_folium import st_folium
 from scipy.stats import gaussian_kde as scipy_kde
 from scoring import scorer, calculer_frais_notaire, calculer_budget_dpe, FRAIS_NOTAIRE_ANCIEN, BUDGET_DPE
 from tracker import track, feedback
-from data import charger_villes, charger_kde, charger_carte_data, get_labels_uniques, get_row, get_prix_kde
+from data import charger_villes, charger_kde, charger_geojson_cache, charger_carte_data, get_labels_uniques, get_row, get_prix_kde
 import uuid
 
 st.set_page_config(page_title="HabitatScore", page_icon="🏠", layout="wide")
@@ -250,7 +250,6 @@ else:
 
     import json
     import branca.colormap as cm
-    from data import charger_geojson_cache, charger_carte_data
 
     df, carte = charger_carte_data()
 
