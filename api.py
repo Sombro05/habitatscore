@@ -64,10 +64,12 @@ async def calculer_score(
 
     # Tracking
     user_agent = request.headers.get("user-agent", "")
+    code_postal = str(row.get("dept_affiche", "")) if row is not None else None
     track(
         type="score_annonce",
         source="extension",
         ville=row["nom_commune"],
+        code_postal=code_postal,
         type_bien=type_bien,
         score=res["score_pct"],
         user_agent=user_agent[:200] if user_agent else None,

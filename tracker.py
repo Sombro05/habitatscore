@@ -8,21 +8,22 @@ def get_client():
         return None
     return create_client(url, key)
 
-def track(type, source=None, ville=None, type_bien=None,
+def track(type, source=None, ville=None, code_postal=None, type_bien=None,
           score=None, filtre_val=None, session_id=None, user_agent=None):
     try:
         client = get_client()
         if not client:
             return
         client.table("events").insert({
-            "type":       type,
-            "source":     source,
-            "ville":      ville,
-            "type_bien":  type_bien,
-            "score":      score,
-            "filtre_val": filtre_val,
-            "session_id": session_id,
-            "user_agent": user_agent,
+            "type":        type,
+            "source":      source,
+            "ville":       ville,
+            "code_postal": code_postal,
+            "type_bien":   type_bien,
+            "score":       score,
+            "filtre_val":  filtre_val,
+            "session_id":  session_id,
+            "user_agent":  user_agent,
         }).execute()
     except Exception:
         pass  # Ne jamais bloquer l'app si le tracking échoue

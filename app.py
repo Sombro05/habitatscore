@@ -143,6 +143,7 @@ if page == "Analyser un bien":
         type="analyse_bien",
         source="app",
         ville=choix,
+        code_postal=str(row["dept_affiche"]) if "dept_affiche" in row else None,
         type_bien=type_bien,
         score=res["score_pct"],
         session_id=st.session_state.session_id,
