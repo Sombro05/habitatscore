@@ -4,7 +4,8 @@ async function scorerAnnonce(ville, surface, prix, typeBien, dpe) {
   try {
     const params = new URLSearchParams({
       ville, surface, prix, type_bien: typeBien, 
-      dpe: dpe || "E"  // E par défaut si non renseigné
+      dpe: dpe || "E",  // E par défaut si non renseigné
+      uid: USER_ID || ""
     });
     const res = await fetch(`${API_URL}/score?${params}`);
     if (!res.ok) return null;
@@ -17,6 +18,17 @@ function couleurScore(score) {
   if (score >= 40) return "#E67E22";
   return "#E74C3C";
 }
+
+// Identifiant anonyme persistant
+let USER_ID = null;
+chrome.storage.local.get("habitatscore_uid", (result) => {
+  if (result.habitatscore_uid) {
+    USER_ID = result.habitatscore_uid;
+  } else {
+    USER_ID = crypto.randomUUID();
+    chrome.storage.local.set({ habitatscore_uid: USER_ID });
+  }
+});
 
 // Sélecteurs par site
 const SELECTEURS = {

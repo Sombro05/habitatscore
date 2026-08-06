@@ -44,6 +44,8 @@ async def calculer_score(
     prix:      float,
     type_bien: str = "Appartement",
     usage:     str = "Résidence principale",
+    dpe:       str = "",
+    uid:       str = "",
 ):
     row = trouver_ville(ville, type_bien)
     if row is None:
@@ -69,9 +71,9 @@ async def calculer_score(
         type="score_annonce",
         source="extension",
         ville=row["nom_commune"],
-        code_postal=code_postal,
         type_bien=type_bien,
         score=res["score_pct"],
+        session_id=uid or None,
         user_agent=user_agent[:200] if user_agent else None,
     )
 
