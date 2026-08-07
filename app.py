@@ -161,8 +161,7 @@ if page == "Analyser un bien":
         c1, c2, c3, c4, c5, c6 = st.columns(6)
         c1.metric("Prix au m²",               f"{res['prix_m2_achat_travaux']:,} €", f"{res['ecart']:+.1f}% vs marché")
         c2.metric("Coût au m² (tout compris)", f"{res['prix_m2_tout_compris']:,} €",  f"{res['ecart_tout_compris']:+.1f}% vs marché")
-        c3.metric("Coût total",               f"{res['cout_total']:,} €")
-        c4.metric("Rendement brut",           f"{res['rdt_brut']} %",)
+        c3.metric("Coût total",               f"{res['cout_total']:,} €"),
         delta_rdt = round(res['rdt_brut'] - res['rdt_neutre'], 2)
         c4.metric("Rendement brut", f"{res['rdt_brut']} %",
                   f"{delta_rdt:+.2f}% vs neutre ville ({res['rdt_neutre']} %)")
