@@ -20,6 +20,21 @@ def charger_geojson_cache(type_local, col_val):
         return json.load(f)
 
 @st.cache_data
+def charger_pays_voisins():
+    # Généré par 14_prep_pays_voisins.py (Natural Earth, domaine public)
+    with open("geojson_cache/pays_voisins.json", "r", encoding="utf-8") as f:
+        return json.load(f)
+
+@st.cache_data
+def charger_ventes_commune(code_commune, type_local):
+    # Ventes DVF d'une commune (lecture filtrée du parquet, sans charger tout le fichier)
+    return pd.read_parquet(
+        "dvf_clean.parquet",
+        columns=["date_mutation", "valeur_fonciere", "surface_reelle_bati", "prix_m2"],
+        filters=[("code_commune", "==", code_commune), ("type_local", "==", type_local)],
+    )
+
+@st.cache_data
 def charger_carte_data():
     df    = pd.read_parquet("dvf_clean.parquet")
     carte = pd.read_csv("dvf_carte.csv")
