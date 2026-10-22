@@ -174,6 +174,7 @@ if page == "Analyser un bien":
         dpe=dpe,
         budget_dpe_override=budget_dpe if budget_dpe != budget_dpe_auto else None,
         coef_vacance=float(row.get("coef_vacance", 1.0)),
+        coef_rotation=float(row.get("coef_rotation", 1.0)),
     )
 
     track(
@@ -257,13 +258,17 @@ if page == "Analyser un bien":
                 delta_loyer = loyer - int(loyer_m2_estime * surface)
                 vacance     = row.get("vacance_locative")
                 texte_vac   = f"{vacance:.0%}".replace(".", ",") if pd.notna(vacance) else "inconnue"
+                rotation    = row.get("rotation")
+                texte_rot   = f"{rotation:.1%}".replace(".", ",") if pd.notna(rotation) else "inconnu"
                 c_rdt, c_loy = st.columns(2)
-                c_rdt.metric("Rendement ajusté (vacance)", f"{fmt(res['rdt_ajuste'], 2)} %",
+                c_rdt.metric("Rendement ajusté", f"{fmt(res['rdt_ajuste'], 2)} %",
                              f"{delta_rdt:+.2f}".replace(".", ",") + f" pt vs ville ({fmt(res['rdt_neutre'], 2)} %)", border=True,
                              help=f"Rendement brut {fmt(res['rdt_brut'], 2)} % × coefficient de vacance "
-                                  f"{fmt(res['coef_vacance'], 2)}. Vacance locative de la commune : {texte_vac} "
-                                  f"(logements vides / (vides + loués), INSEE 2021) ; au-delà de 30 %, chaque point "
-                                  f"de vacance retire 1 % au loyer.")
+                                  f"{fmt(res['coef_vacance'], 2)} × coefficient de rotation {fmt(res['coef_rotation'], 2)}. "
+                                  f"Vacance locative : {texte_vac} (vides / (vides + loués), INSEE 2021) ; au-delà "
+                                  f"de 30 %, chaque point retire 1 % au loyer. Taux de rotation : {texte_rot} des "
+                                  f"logements vendus par an ; sous 1,5 %, chaque pourcent d'écart au seuil retire 2 % au "
+                                  f"rendement, jusqu'à −75 % (marché quasi inexistant).")
                 c_loy.metric("Loyer vs marché", f"{fmt(loyer)} €",
                              f"{fmt(delta_loyer)} € / mois", border=True)
 
@@ -412,9 +417,10 @@ else:
         style_function=style_fn,
         highlight_function=highlight_fn,
         tooltip=folium.GeoJsonTooltip(
-            fields=["nom", "rendement", "prix_m2", "loyer_m2", "vacance"] + (["ventes"] if par_epci else []),
+            fields=["nom", "rendement", "prix_m2", "loyer_m2", "vacance", "rotation"]
+                   + (["ventes"] if par_epci else []),
             aliases=["Intercommunalité" if par_epci else "Commune", "Rendement estimé",
-                     "Prix médian / m²", "Loyer médian / m²", "Vacance locative"]
+                     "Prix médian / m²", "Loyer médian / m²", "Vacance locative", "Taux de rotation"]
                     + (["Ventes analysées"] if par_epci else []),
             localize=True,
         ),

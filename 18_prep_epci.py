@@ -9,6 +9,7 @@ Pour chaque EPCI et type de bien :
 Contours : union des communes de l'EPCI (communes_small.geojson), anciennes communes
 rattachées via vacance_communes.csv (code_commune_2023).
 
+- taux de rotation : ventes / 3 ans / logements sur l'ensemble de l'EPCI (règle de 19_prep_rotation.py).
 Entrées : dvf_carte.csv (05_prep_carte.py), vacance_communes.csv, loyers_anil_2025.csv
 Sorties : geojson_cache/EPCI_Appartement.json, geojson_cache/EPCI_Maison.json
 """
@@ -18,6 +19,7 @@ from shapely.geometry import mapping, shape
 from shapely.ops import unary_union
 
 SEUIL_VACANCE = 0.30  # identique à 16_prep_vacance.py
+SEUIL_ROTATION, PENTE, PLANCHER = 0.015, 2, 0.25  # identiques à 19_prep_rotation.py
 
 def arrondir(coords, decimales=4):
     if isinstance(coords[0], (int, float)):
@@ -38,9 +40,15 @@ actuelle_de = dict(zip(vac["code_commune"], vac["code_commune_2023"]))
 # Vacance et commune principale (la plus grande) par EPCI, sur les communes actuelles
 vac_actuelles = vac[vac["code_commune"] == vac["code_commune_2023"]].copy()
 vac_actuelles["EPCI"] = vac_actuelles["code_commune"].map(epci_de)
+rot = pd.read_csv("rotation_communes.csv", dtype={"code_commune": str})
+vac_actuelles = vac_actuelles.merge(rot[["code_commune", "ventes_3ans"]], on="code_commune", how="left")
 par_epci = vac_actuelles.groupby("EPCI").agg(vacants=("logements_vacants", "sum"),
                                              loues=("logements_loues", "sum"),
+                                             logements=("logements", "sum"),
+                                             ventes=("ventes_3ans", "sum"),
                                              nb_communes=("code_commune", "count"))
+par_epci["rotation"] = par_epci["ventes"] / 3 / par_epci["logements"]
+par_epci["coef_rot"] = (1 - PENTE * ((SEUIL_ROTATION - par_epci["rotation"]) / SEUIL_ROTATION).clip(lower=0)).clip(lower=PLANCHER)
 par_epci["vacance"] = par_epci["vacants"] / (par_epci["vacants"] + par_epci["loues"])
 par_epci["coef"] = (1 - (par_epci["vacance"] - SEUIL_VACANCE).clip(lower=0)).clip(lower=0)
 
@@ -71,7 +79,7 @@ for type_local in ["Appartement", "Maison"]:
         prix  = mediane_ponderee(g["prix_m2_brut"], g["nb_ventes"])
         loyer = (g["loyer_m2_estime"] * g["nb_ventes"]).sum() / g["nb_ventes"].sum()
         info  = par_epci.loc[epci] if epci in par_epci.index else None
-        coef  = float(info["coef"]) if info is not None else 1.0
+        coef  = float(info["coef"] * info["coef_rot"]) if info is not None else 1.0
         rdt   = loyer * 12 / prix * 100 * coef
         geom  = mapping(contours[epci])
         geom["coordinates"] = arrondir(json.loads(json.dumps(geom["coordinates"])))
@@ -83,6 +91,8 @@ for type_local in ["Appartement", "Maison"]:
             "prix_m2":   f"{prix:,.0f} €/m²",
             "loyer_m2":  f"{loyer:.2f} €/m²",
             "vacance":   f"{info['vacance']:.0%}" if info is not None else "—",
+            "rotation":  (f"{info['rotation']:.1%} des logements vendus / an (× {info['coef_rot']:.2f})"
+                          if info is not None else "—"),
             "ventes":    f"{int(g['nb_ventes'].sum()):,}".replace(",", " "),
         }})
     nom = f"geojson_cache/EPCI_{type_local}.json"

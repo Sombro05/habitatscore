@@ -30,6 +30,7 @@ for type_local, col_val in combinations:
     lookup_prix = data_ok.set_index("code_commune")["prix_m2_median"].to_dict()
     lookup_loy  = data_ok.set_index("code_commune")["loyer_m2_estime"].to_dict()
     lookup_vac  = data_ok.set_index("code_commune")["vacance_locative"].dropna().to_dict()
+    lookup_rot  = data_ok.set_index("code_commune")[["rotation", "coef_rotation"]].dropna().to_dict("index")
 
     import copy
     geojson = copy.deepcopy(geojson_base)
@@ -41,6 +42,9 @@ for type_local, col_val in combinations:
         feature["properties"]["prix_m2"]   = f"{lookup_prix[code]:,.0f} €/m²" if code in lookup_prix else "—"
         feature["properties"]["loyer_m2"]  = f"{lookup_loy[code]:.2f} €/m²"   if code in lookup_loy  else "—"
         feature["properties"]["vacance"]   = f"{lookup_vac[code]:.0%}"         if code in lookup_vac  else "—"
+        rot = lookup_rot.get(code)
+        feature["properties"]["rotation"]  = (f"{rot['rotation']:.1%} des logements vendus / an "
+                                              f"(× {rot['coef_rotation']:.2f})") if rot else "—"
 
     nom = f"geojson_cache/{type_local}_{col_val}.json"
     with open(nom, "w", encoding="utf-8") as f:

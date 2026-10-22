@@ -32,7 +32,7 @@ def scorer(
     prix_achat, surface, type_bien, usage,
     prix_m2_median, nb_ventes, loyer_m2_estime,
     loyer_mensuel=None, frais_notaire=None, travaux=0,
-    dpe="", budget_dpe_override=None, coef_vacance=1.0,
+    dpe="", budget_dpe_override=None, coef_vacance=1.0, coef_rotation=1.0,
 ):
     if frais_notaire is None:
         frais_notaire = calculer_frais_notaire(prix_achat)
@@ -60,9 +60,10 @@ def scorer(
         loyer_marche_an = loyer_m2_estime * surface * 12
         prix_marche_tot = prix_m2_median * surface
         rdt_neutre      = loyer_marche_an / prix_marche_tot * 100
-        # Rendement ajusté du risque de vacance locative de la commune (16_prep_vacance.py),
-        # comparé au rendement neutre du marché : pénalise les communes où l'on loue mal
-        rdt_ajuste      = rdt_brut * coef_vacance
+        # Rendement ajusté du risque de vacance locative (16_prep_vacance.py) et de la faible
+        # rotation du marché (19_prep_rotation.py), comparé au rendement neutre du marché :
+        # pénalise les communes où l'on loue mal ou revend difficilement
+        rdt_ajuste      = rdt_brut * coef_vacance * coef_rotation
 
     if usage == "Achat / revente":
         prix_m2_ref_score = prix_m2_tout_compris
@@ -99,6 +100,7 @@ def scorer(
         "rdt_neutre":            round(rdt_neutre, 2) if rdt_neutre else None,
         "rdt_ajuste":            round(rdt_ajuste, 2) if rdt_ajuste is not None else None,
         "coef_vacance":          coef_vacance,
+        "coef_rotation":         coef_rotation,
     }
 def scorer_loyer(loyer_mensuel, surface, loyer_m2_marche):
     """
