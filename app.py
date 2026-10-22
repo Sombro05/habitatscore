@@ -30,12 +30,6 @@ qp_page = qp.get("page", "")
 if qp_page == "carte" and "page_forcee" not in st.session_state:
     st.session_state["page_forcee"] = "Explorer le marché"
 
-@st.cache_data
-def charger_geojson_cache(type_local, col_val):
-    nom = f"geojson_cache/{type_local}_{col_val}.json"
-    with open(nom, "r", encoding="utf-8") as f:
-        return json.load(f)
-    
 st.sidebar.title("🏠 HabitatScore")
 index_defaut = 1 if st.session_state.get("page_forcee") == "Explorer le marché" else 0
 page = st.sidebar.radio("Navigation", ["Analyser un bien", "Explorer le marché"],

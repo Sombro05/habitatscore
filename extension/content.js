@@ -70,8 +70,10 @@ function extraireInfoCarte(carte) {
   // Ville
   const lignes = texte.split("\n").map(l => l.trim()).filter(Boolean);
   let ville = null;
+  let codePostal = null;
   for (const l of lignes) {
     if (/\b\d{5}\b/.test(l) && l.length < 80 && !l.includes("{") && !l.includes(".")) {
+      codePostal = l.match(/\b(\d{5})\b/)[1];
       if (l.includes(",") && l.includes("(")) {
         ville = l.split(",").pop().replace(/\(?\d{5}\)?/g, "").trim();
       } else if (l.includes("(") && l.includes(")")) {
@@ -97,7 +99,7 @@ function extraireInfoCarte(carte) {
     if (dpeMatch) dpe = dpeMatch[0];
   }
 
-  return { prix, surface, ville, typeBien, dpe };
+  return { prix, surface, ville, codePostal, typeBien, dpe };
 }
 
 function ajouterBadge(carte, data) {
@@ -122,6 +124,26 @@ function ajouterBadge(carte, data) {
     <span style="font-size:14px;font-weight:700">${data.score}/100</span>
     <span style="font-size:10px;opacity:0.9">${ecartTexte}</span>
   `;
+
+  const style = window.getComputedStyle(carte);
+  if (style.position === "static") carte.style.position = "relative";
+  carte.appendChild(badge);
+}
+
+// Badge gris quand les données de marché n'existent pas (ex. ventes en Alsace-Moselle)
+function ajouterBadgeIndisponible(carte, message) {
+  carte.querySelectorAll(".habitatscore-badge").forEach(b => b.remove());
+
+  const badge = document.createElement("div");
+  badge.className = "habitatscore-badge";
+  badge.style.cssText = `
+    position: absolute; top: 8px; right: 8px;
+    background: #95a5a6; color: white; border-radius: 6px; padding: 4px 8px;
+    font-size: 12px; font-weight: 600; z-index: 999;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3); cursor: help;
+  `;
+  badge.textContent = "N/D";
+  badge.title = message || "Données de marché non disponibles";
 
   const style = window.getComputedStyle(carte);
   if (style.position === "static") carte.style.position = "relative";
@@ -225,23 +247,24 @@ function appliquerFiltre(scoreMin) {
 
   observer.observe(document.body, { childList: true, subtree: true });
 }
-async function scorerLoyer(ville, surface, loyer, typeBien) {
+async function scorerLoyer(ville, surface, loyer, typeBien, codePostal) {
   try {
-    console.log("scorerLoyer:", ville, surface, loyer, typeBien);
     const params = new URLSearchParams({
-      ville, surface, loyer, type_bien: typeBien
+      ville, surface, loyer, type_bien: typeBien,
+      code_postal: codePostal || ""
     });
     const res = await fetch(`${API_URL}/score_loyer?${params}`);
     if (!res.ok) return null;
     return await res.json();
   } catch (e) { return null; }
 }
-async function scorerAnnonce(ville, surface, prix, typeBien, dpe) {
+async function scorerAnnonce(ville, surface, prix, typeBien, dpe, codePostal) {
   try {
     const params = new URLSearchParams({
-      ville, surface, prix, type_bien: typeBien, 
+      ville, surface, prix, type_bien: typeBien,
       dpe: dpe || "E",  // E par défaut si non renseigné
-      uid: USER_ID || ""
+      uid: USER_ID || "",
+      code_postal: codePostal || ""
     });
     const res = await fetch(`${API_URL}/score?${params}`);
     if (!res.ok) return null;
@@ -309,7 +332,8 @@ async function analyserToutesLesCartes() {
               info.ville,
               info.surface,
               info.prix,
-              info.typeBien
+              info.typeBien,
+              info.codePostal
             );
           } else {
             result = await scorerAnnonce(
@@ -317,7 +341,8 @@ async function analyserToutesLesCartes() {
               info.surface,
               info.prix,
               info.typeBien,
-              info.dpe
+              info.dpe,
+              info.codePostal
             );
           }
         } catch (e) {
@@ -330,6 +355,8 @@ async function analyserToutesLesCartes() {
 
         if (result && !result.erreur) {
           ajouterBadge(carte, result);
+        } else if (result?.code === "prix_indisponible") {
+          ajouterBadgeIndisponible(carte, result.message);
         }
       })
     );
