@@ -420,15 +420,15 @@ else:
         ),
     ).add_to(m)
 
-    # Noms des villes CARTO (sans fond ni routes), au-dessus des communes et sans bloquer
-    # les infobulles. Clé gratuite : https://carto.com/basemaps/apikey/ — à placer dans les
+    # Noms des villes CARTO (sans fond ni routes), au-dessus des communes (calque 400) mais
+    # sous les infobulles (calque 650), sans bloquer le survol. Clé gratuite : https://carto.com/basemaps/apikey/ — à placer dans les
     # secrets Streamlit (CARTO_API_KEY), jamais dans le code. Sans clé : pas de noms.
     try:
         cle_carto = st.secrets.get("CARTO_API_KEY", "")
     except Exception:  # pas de fichier de secrets en local
         cle_carto = os.environ.get("CARTO_API_KEY", "")
     if cle_carto:
-        folium.map.CustomPane("noms", z_index=650, pointer_events=False).add_to(m)
+        folium.map.CustomPane("noms", z_index=600, pointer_events=False).add_to(m)
         folium.TileLayer(
             tiles="https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png?key=" + cle_carto,
             attr='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> '
