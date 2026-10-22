@@ -8,8 +8,9 @@ from streamlit_folium import st_folium
 from scipy.stats import gaussian_kde as scipy_kde
 from scoring import scorer, calculer_frais_notaire, calculer_budget_dpe, FRAIS_NOTAIRE_ANCIEN, BUDGET_DPE
 from tracker import track, feedback
-from data import charger_villes, charger_kde, charger_geojson_cache, charger_carte_data, charger_pays_voisins, charger_ventes_commune, get_labels_uniques, get_row, get_prix_kde
+from data import charger_villes, charger_kde, charger_geojson_cache, charger_carte_data, charger_pays_voisins, charger_geojson_epci, charger_ventes_commune, get_labels_uniques, get_row, get_prix_kde
 import uuid
+import os
 
 st.set_page_config(page_title="HabitatScore", page_icon="🏠", layout="wide")
 
@@ -172,6 +173,7 @@ if page == "Analyser un bien":
         travaux=travaux,
         dpe=dpe,
         budget_dpe_override=budget_dpe if budget_dpe != budget_dpe_auto else None,
+        coef_vacance=float(row.get("coef_vacance", 1.0)),
     )
 
     track(
@@ -186,12 +188,15 @@ if page == "Analyser un bien":
 
     # ══ RÉSULTAT ════════════════════════════
     pct = res["score_pct"]
+    # En location, le score mêle prix et rendement (vacance comprise) : libellés d'investissement
+    libelles = (("Bon investissement", "Investissement moyen", "Investissement risqué")
+                if usage == "Location" else ("Bonne affaire", "Prix dans la moyenne", "Prix élevé"))
     if pct >= 65:
-        verdict, fond, texte = "Bonne affaire", "#EAF3DE", "#27500A"
+        verdict, fond, texte = libelles[0], "#EAF3DE", "#27500A"
     elif pct >= 40:
-        verdict, fond, texte = "Prix dans la moyenne", "#FAEEDA", "#633806"
+        verdict, fond, texte = libelles[1], "#FAEEDA", "#633806"
     else:
-        verdict, fond, texte = "Prix élevé", "#FCEBEB", "#791F1F"
+        verdict, fond, texte = libelles[2], "#FCEBEB", "#791F1F"
 
     # Prix au m² retenu par le score (tout compris en achat / revente, cf. scoring.py)
     prix_ref = res["prix_m2_tout_compris"] if usage == "Achat / revente" else res["prix_m2_achat_travaux"]
@@ -248,11 +253,17 @@ if page == "Analyser un bien":
             st.markdown(f'<div style="background:#FFFFFF;border-radius:8px;padding:10px 8px">{regle}</div>',
                         unsafe_allow_html=True)
             if usage == "Location":
-                delta_rdt   = res["rdt_brut"] - res["rdt_neutre"]
+                delta_rdt   = res["rdt_ajuste"] - res["rdt_neutre"]
                 delta_loyer = loyer - int(loyer_m2_estime * surface)
+                vacance     = row.get("vacance_locative")
+                texte_vac   = f"{vacance:.0%}".replace(".", ",") if pd.notna(vacance) else "inconnue"
                 c_rdt, c_loy = st.columns(2)
-                c_rdt.metric("Rendement brut", f"{fmt(res['rdt_brut'], 2)} %",
-                             f"{delta_rdt:+.2f}".replace(".", ",") + f" pt vs ville ({fmt(res['rdt_neutre'], 2)} %)", border=True)
+                c_rdt.metric("Rendement ajusté (vacance)", f"{fmt(res['rdt_ajuste'], 2)} %",
+                             f"{delta_rdt:+.2f}".replace(".", ",") + f" pt vs ville ({fmt(res['rdt_neutre'], 2)} %)", border=True,
+                             help=f"Rendement brut {fmt(res['rdt_brut'], 2)} % × coefficient de vacance "
+                                  f"{fmt(res['coef_vacance'], 2)}. Vacance locative de la commune : {texte_vac} "
+                                  f"(logements vides / (vides + loués), INSEE 2021) ; au-delà de 30 %, chaque point "
+                                  f"de vacance retire 1 % au loyer.")
                 c_loy.metric("Loyer vs marché", f"{fmt(loyer)} €",
                              f"{fmt(delta_loyer)} € / mois", border=True)
 
@@ -332,18 +343,27 @@ else:
 
     type_carte = st.radio("Type de bien", ["Appartement", "Maison"], index=1, horizontal=True)
     metrique   = st.radio("Afficher", ["Prix au m² médian (€)", "Rendement estimé (%)"], index=1, horizontal=True)
+    echelle    = st.radio("Échelle", ["Commune", "Intercommunalité"], horizontal=True,
+                          help="Intercommunalité : vue d'ensemble des bassins, moins sensible aux "
+                               "communes avec peu de ventes. Commune : détail, prix lissés vers "
+                               "l'intercommunalité quand il y a peu de ventes.")
+    par_epci   = echelle == "Intercommunalité"
 
     col_val = "prix_m2_median" if metrique == "Prix au m² médian (€)" else "rendement_median"
     legende = "Prix €/m²"      if metrique == "Prix au m² médian (€)" else "Rendement (%)"
 
-    # Charger le GeoJSON pré-généré
-    geojson = charger_geojson_cache(type_carte, col_val)
+    # Charger le GeoJSON pré-généré (communes : 12_prep_geojson.py, EPCI : 18_prep_epci.py)
+    if par_epci:
+        geojson = charger_geojson_epci(type_carte)
+        cle_val = "val_" + col_val
+        valeurs = pd.Series([f["properties"][cle_val] for f in geojson["features"]])
+    else:
+        geojson = charger_geojson_cache(type_carte, col_val)
+        cle_val = "val"
+        valeurs = carte.loc[carte["type_local"] == type_carte, col_val]
 
-    data_ok = carte[carte["type_local"] == type_carte].copy()
-    lookup  = data_ok.set_index("code_commune")[col_val].to_dict()
-
-    val_min = data_ok[col_val].quantile(0.05)
-    val_max = data_ok[col_val].quantile(0.95)
+    val_min = valeurs.quantile(0.05)
+    val_max = valeurs.quantile(0.95)
 
     if col_val == "prix_m2_median":
         colors = ["#1a9850","#a6d96a","#d9ef8b","#fee08b","#fdae61","#f46d43","#d73027"]
@@ -356,12 +376,13 @@ else:
     )
 
     def style_fn(feature):
-        val = feature["properties"].get("val")
+        val = feature["properties"].get(cle_val)
+        trait = 0.8 if par_epci else 0.3
         if val is None:
             return {"fillColor": "#cccccc", "fillOpacity": 0.15,
-                    "color": "#ffffff", "weight": 0.3}
+                    "color": "#ffffff", "weight": trait}
         return {"fillColor": colormap(val), "fillOpacity": 0.55,
-                "color": "#ffffff", "weight": 0.3}
+                "color": "#ffffff", "weight": trait}
 
     def highlight_fn(feature):
         return {"weight": 1.5, "color": "#333", "fillOpacity": 0.95}
@@ -380,8 +401,9 @@ else:
     # Terres (France et pays voisins) en gris clair, sous les communes
     folium.GeoJson(
         charger_pays_voisins(),
-        style_function=lambda f: {"fillColor": "#ececec", "fillOpacity": 1,
-                                  "color": "#9e9e9e", "weight": 1},  # frontières et côtes
+        # Frontières et côtes en gris ; pas de trait pour la France (les communes le dessinent)
+        style_function=lambda f: {"fillColor": "#ececec", "fillOpacity": 1, "color": "#9e9e9e",
+                                  "weight": 0 if f["properties"].get("france") else 1},
         interactive=False,
     ).add_to(m)
 
@@ -390,11 +412,29 @@ else:
         style_function=style_fn,
         highlight_function=highlight_fn,
         tooltip=folium.GeoJsonTooltip(
-            fields=["nom", "rendement", "prix_m2", "loyer_m2"],
-            aliases=["Commune", "Rendement estimé", "Prix médian / m²", "Loyer médian / m²"],
+            fields=["nom", "rendement", "prix_m2", "loyer_m2", "vacance"] + (["ventes"] if par_epci else []),
+            aliases=["Intercommunalité" if par_epci else "Commune", "Rendement estimé",
+                     "Prix médian / m²", "Loyer médian / m²", "Vacance locative"]
+                    + (["Ventes analysées"] if par_epci else []),
             localize=True,
         ),
     ).add_to(m)
+
+    # Noms des villes CARTO (sans fond ni routes), au-dessus des communes et sans bloquer
+    # les infobulles. Clé gratuite : https://carto.com/basemaps/apikey/ — à placer dans les
+    # secrets Streamlit (CARTO_API_KEY), jamais dans le code. Sans clé : pas de noms.
+    try:
+        cle_carto = st.secrets.get("CARTO_API_KEY", "")
+    except Exception:  # pas de fichier de secrets en local
+        cle_carto = os.environ.get("CARTO_API_KEY", "")
+    if cle_carto:
+        folium.map.CustomPane("noms", z_index=650, pointer_events=False).add_to(m)
+        folium.TileLayer(
+            tiles="https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png?key=" + cle_carto,
+            attr='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> '
+                 '&copy; <a href="https://carto.com/attributions">CARTO</a>',
+            pane="noms", overlay=True, control=False,
+        ).add_to(m)
 
     colormap.add_to(m)
     # Cadrage sur la France métropolitaine (Corse incluse), une fois la carte à sa taille
@@ -415,6 +455,7 @@ else:
             {% endmacro %}
         """)
     m.add_child(CadrageFrance())
+
 
     # Hauteur adaptée à l'écran : l'iframe du composant prend la hauteur de la fenêtre
     # moins l'en-tête de la page, et la carte occupe toute l'iframe

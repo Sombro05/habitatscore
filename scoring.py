@@ -32,7 +32,7 @@ def scorer(
     prix_achat, surface, type_bien, usage,
     prix_m2_median, nb_ventes, loyer_m2_estime,
     loyer_mensuel=None, frais_notaire=None, travaux=0,
-    dpe="", budget_dpe_override=None,
+    dpe="", budget_dpe_override=None, coef_vacance=1.0,
 ):
     if frais_notaire is None:
         frais_notaire = calculer_frais_notaire(prix_achat)
@@ -51,7 +51,7 @@ def scorer(
     prix_m2_tout_compris  = cout_total / surface
     ecart = (prix_m2_achat_travaux - prix_m2_median) / prix_m2_median * 100
 
-    rdt_brut = rdt_net = rdt_neutre = None
+    rdt_brut = rdt_net = rdt_neutre = rdt_ajuste = None
 
     if usage == "Location" and loyer_mensuel:
         loyer_annuel = loyer_mensuel * 12
@@ -60,6 +60,9 @@ def scorer(
         loyer_marche_an = loyer_m2_estime * surface * 12
         prix_marche_tot = prix_m2_median * surface
         rdt_neutre      = loyer_marche_an / prix_marche_tot * 100
+        # Rendement ajusté du risque de vacance locative de la commune (16_prep_vacance.py),
+        # comparé au rendement neutre du marché : pénalise les communes où l'on loue mal
+        rdt_ajuste      = rdt_brut * coef_vacance
 
     if usage == "Achat / revente":
         prix_m2_ref_score = prix_m2_tout_compris
@@ -69,7 +72,7 @@ def scorer(
     s_prix = _score_prix(prix_m2_ref_score, prix_m2_median)
 
     if usage == "Location" and rdt_brut is not None:
-        s_rendement = _score_rendement(rdt_brut, rdt_neutre)
+        s_rendement = _score_rendement(rdt_ajuste, rdt_neutre)
         score_pct   = round(s_rendement * 0.70 + s_prix * 0.30)
         scores = {"rendement": s_rendement, "prix": s_prix}
         poids  = {"rendement": "70%", "prix": "30%"}
@@ -94,6 +97,8 @@ def scorer(
         "rdt_brut":              round(rdt_brut, 2) if rdt_brut else None,
         "rdt_net":               round(rdt_net,  2) if rdt_net  else None,
         "rdt_neutre":            round(rdt_neutre, 2) if rdt_neutre else None,
+        "rdt_ajuste":            round(rdt_ajuste, 2) if rdt_ajuste is not None else None,
+        "coef_vacance":          coef_vacance,
     }
 def scorer_loyer(loyer_mensuel, surface, loyer_m2_marche):
     """

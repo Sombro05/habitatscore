@@ -20,6 +20,12 @@ def charger_geojson_cache(type_local, col_val):
         return json.load(f)
 
 @st.cache_data
+def charger_geojson_epci(type_local):
+    # Généré par 18_prep_epci.py (contours et valeurs par intercommunalité)
+    with open(f"geojson_cache/EPCI_{type_local}.json", "r", encoding="utf-8") as f:
+        return json.load(f)
+
+@st.cache_data
 def charger_pays_voisins():
     # Généré par 14_prep_pays_voisins.py (Natural Earth, domaine public)
     with open("geojson_cache/pays_voisins.json", "r", encoding="utf-8") as f:
