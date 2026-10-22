@@ -30,13 +30,19 @@ anil["loyer_m2"]         = anil["loypredm2"].str.replace(",", ".").astype(float)
 anil = anil.rename(columns={"LIBGEO": "nom_commune", "DEP": "code_departement"})
 anil = anil[["code_commune", "nom_commune", "code_departement", "loyer_m2"]]
 
-# Une ligne par type de bien, même règle que 03_prep_villes.py (+15 % pour les maisons)
+# Loyers des maisons : fichier ANIL dédié (même règle que 03_prep_villes.py)
+maisons = pd.read_csv("loyers_anil_maisons_2025.csv", sep=";", encoding="latin-1", dtype=str)
+maisons["code_commune"] = maisons["INSEE_C"].str.zfill(5)
+maisons["loyer_m2_maison"] = maisons["loypredm2"].str.replace(",", ".").astype(float)
+anil = anil.merge(maisons[["code_commune", "loyer_m2_maison"]], on="code_commune", how="left")
+
+# Une ligne par type de bien
 lignes = []
-for type_local, coef in [("Appartement", 1.0), ("Maison", 1.15)]:
+for type_local, colonne in [("Appartement", "loyer_m2"), ("Maison", "loyer_m2_maison")]:
     t = anil.copy()
     t["type_local"]      = type_local
-    t["loyer_m2_estime"] = (t["loyer_m2"] * coef).round(2).clip(4, 40)
-    lignes.append(t)
+    t["loyer_m2_estime"] = t[colonne].round(2).clip(4, 40)
+    lignes.append(t.drop(columns="loyer_m2_maison"))
 loyers = pd.concat(lignes, ignore_index=True)
 
 loyers["nom_normalise"] = loyers["nom_commune"].apply(normaliser)
