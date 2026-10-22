@@ -1,5 +1,9 @@
 import os
+from postgrest.types import ReturnMethod
 from supabase import create_client
+
+# Les insertions ne relisent pas la ligne créée (returning=minimal) : la clé publique
+# n'a besoin que du droit d'ajout, sans droit de lecture sur les tables (cf. RLS)
 
 def get_client():
     url = os.environ.get("SUPABASE_URL", "")
@@ -24,7 +28,7 @@ def track(type, source=None, ville=None, code_postal=None, type_bien=None,
             "filtre_val":  filtre_val,
             "session_id":  session_id,
             "user_agent":  user_agent,
-        }).execute()
+        }, returning=ReturnMethod.minimal).execute()
     except Exception:
         pass  # Ne jamais bloquer l'app si le tracking échoue
 
@@ -39,6 +43,6 @@ def feedback(note, commentaire=None, email=None, source=None, session_id=None):
             "email":       email,
             "source":      source,
             "session_id":  session_id,
-        }).execute()
+        }, returning=ReturnMethod.minimal).execute()
     except Exception:
         pass

@@ -1,0 +1,27 @@
+# Empêche la mise en pause automatique du projet Supabase gratuit
+# (pause après 7 jours sans activité) : une requête de lecture deux fois par semaine.
+# Secrets du dépôt à créer : SUPABASE_URL et SUPABASE_KEY (clé publique « anon »).
+name: Réveil Supabase
+
+on:
+  schedule:
+    - cron: "0 6 * * 1,4"   # lundi et jeudi, 6 h UTC
+  workflow_dispatch:         # lancement manuel depuis l'onglet Actions
+
+permissions: {}
+
+jobs:
+  reveil:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Requête vers Supabase
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+        run: |
+          code=$(curl -s -o /dev/null -w "%{http_code}" \
+            "$SUPABASE_URL/rest/v1/events?select=id&limit=1" \
+            -H "apikey: $SUPABASE_KEY" -H "Authorization: Bearer $SUPABASE_KEY")
+          echo "Réponse Supabase : $code"
+          test "$code" = "200"
