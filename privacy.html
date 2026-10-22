@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Politique de confidentialité - HabitatScore</title>
   <style>
     body { font-family: sans-serif; max-width: 800px; margin: 40px auto; padding: 0 20px; line-height: 1.6; }
@@ -11,48 +12,68 @@
 </head>
 <body>
   <h1>Politique de confidentialité - HabitatScore</h1>
-  <p>Dernière mise à jour : juillet 2026</p>
+  <p>Dernière mise à jour : octobre 2026</p>
 
-  <h2>1. Présentation</h2>
-  <p>HabitatScore (habitatscore.fr) est un service d'analyse immobilière. La présente politique décrit comment nous traitons les données dans le cadre de notre extension Chrome et de notre application web.</p>
+  <h2>1. Responsable du traitement</h2>
+  <p>HabitatScore (habitatscore.fr) est un service d'analyse immobilière édité par Kevin Legrand. La présente politique décrit les données traitées par notre extension Chrome et notre application web.</p>
+  <p>Contact : <a href="mailto:contact@habitatscore.fr">contact@habitatscore.fr</a></p>
 
-  <h2>2. Données collectées</h2>
-  <p>Notre extension Chrome lit uniquement les informations publiques des annonces immobilières visibles à l'écran afin de calculer un score d'investissement. Les données lues sont :</p>
+  <h2>2. Données traitées par l'extension Chrome</h2>
+  <p><strong>Pour calculer le score</strong>, l'extension lit uniquement les informations publiques des annonces affichées sur leboncoin.fr et seloger.com, puis les envoie à notre serveur :</p>
   <ul>
-    <li>Le prix de vente affiché sur l'annonce</li>
-    <li>La surface du bien (en m²)</li>
-    <li>La ville et le code postal</li>
-    <li>Le type de bien (maison ou appartement)</li>
+    <li>le prix de vente ou le loyer affiché ;</li>
+    <li>la surface du bien (en m²) ;</li>
+    <li>la ville et le code postal ;</li>
+    <li>le type de bien (maison ou appartement) et la classe énergie (DPE).</li>
   </ul>
-  <p><strong>Aucune donnée personnelle de l'utilisateur n'est collectée.</strong></p>
-  <p>Nous enregistrons de manière anonyme les informations suivantes à des fins d'amélioration du service :</p>
-  <ul>
-    <li>La ville et le type de bien analysé</li>
-    <li>Le score calculé</li>
-    <li>La date et l'heure de l'analyse</li>
-  </ul>
-  <p>Ces données sont strictement anonymes et ne permettent pas d'identifier un utilisateur.</p>
+  <p>Ces informations concernent les biens, pas les utilisateurs. Elles servent uniquement à calculer le score et ne sont pas conservées, à l'exception de la ville et du type de bien (voir ci-dessous).</p>
 
-  <h2>3. Données non collectées</h2>
+  <p><strong>Pour mesurer l'utilisation du service</strong>, nous enregistrons à chaque score calculé :</p>
+  <ul>
+    <li>la ville, le type de bien et le score obtenu ;</li>
+    <li>la date et l'heure ;</li>
+    <li>un <strong>identifiant aléatoire</strong> créé par l'extension lors de sa première utilisation et conservé dans votre navigateur. Il permet de compter les utilisateurs distincts. Il n'est relié à aucun nom, adresse email ou compte ;</li>
+    <li>le type de navigateur et de système d'exploitation (« user-agent »).</li>
+  </ul>
+  <p>Ces données sont <strong>pseudonymes</strong> : elles ne permettent pas, à elles seules, de vous identifier. Si vous désinstallez l'extension, l'identifiant est supprimé de votre navigateur et les statistiques déjà enregistrées ne peuvent plus être rattachées à votre utilisation future.</p>
+
+  <h2>3. Données traitées par l'application web</h2>
+  <p>L'application web (habitatscore.streamlit.app) enregistre des statistiques d'usage similaires : pages consultées, ville et type de bien analysés, score obtenu, date et heure, et un identifiant aléatoire propre à chaque visite. Les informations saisies dans le simulateur (prix, surface, travaux…) ne sont pas conservées.</p>
+
+  <h2>4. Données non collectées</h2>
   <p>Nous ne collectons pas :</p>
   <ul>
-    <li>Nom, prénom, adresse email ou toute information personnelle</li>
-    <li>Historique de navigation</li>
-    <li>Données financières ou bancaires</li>
-    <li>Données de localisation GPS</li>
-    <li>Informations de connexion ou mots de passe</li>
+    <li>nom, prénom, adresse email ou coordonnées ;</li>
+    <li>historique de navigation : l'extension n'agit que sur les pages d'annonces de leboncoin.fr et seloger.com ;</li>
+    <li>données financières ou bancaires ;</li>
+    <li>données de localisation GPS ;</li>
+    <li>informations de connexion ou mots de passe.</li>
   </ul>
+  <p>Comme tout serveur web, nos hébergeurs peuvent traiter votre adresse IP dans leurs journaux techniques. Nous ne l'enregistrons pas dans nos statistiques.</p>
 
-  <h2>4. Partage des données</h2>
-  <p>Nous ne vendons, ne louons et ne transférons aucune donnée à des tiers.</p>
+  <h2>5. Finalités et base légale</h2>
+  <ul>
+    <li><strong>Calcul du score</strong> : fourniture du service que vous utilisez.</li>
+    <li><strong>Statistiques d'usage</strong> : intérêt légitime à mesurer et améliorer le service.</li>
+  </ul>
+  <p>Les données ne sont utilisées à aucune autre fin, notamment pas pour de la publicité, et l'utilisation des données par l'extension respecte la politique du Chrome Web Store relative aux données utilisateur, y compris ses exigences d'utilisation limitée.</p>
 
-  <h2>5. Sécurité</h2>
-  <p>Les données anonymes collectées sont stockées de manière sécurisée via Supabase (infrastructure européenne).</p>
+  <h2>6. Destinataires et hébergement</h2>
+  <p>Nous ne vendons, ne louons et ne cédons aucune donnée. Les données sont traitées uniquement par nos prestataires techniques, pour notre compte :</p>
+  <ul>
+    <li>Render (hébergement du serveur de calcul) — Union européenne (Francfort, Allemagne) ;</li>
+    <li>Supabase (stockage des statistiques) — Union européenne (Irlande) ;</li>
+    <li>Streamlit Community Cloud (hébergement de l'application web).</li>
+  </ul>
+  <p>Les données sont hébergées dans l'Union européenne.</p>
 
-  <h2>6. Vos droits (RGPD)</h2>
-  <p>Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Pour exercer ces droits, contactez-nous à : <a href="mailto:contact@habitatscore.fr">contact@habitatscore.fr</a></p>
+  <h2>7. Durée de conservation</h2>
+  <p>Les statistiques d'usage détaillées sont conservées 25 mois au maximum. Au-delà, elles sont anonymisées : l'identifiant aléatoire et le type de navigateur sont supprimés, et seules des données agrégées (par exemple le nombre d'analyses par ville et par mois) sont conservées.</p>
 
-  <h2>7. Contact</h2>
+  <h2>8. Vos droits (RGPD)</h2>
+  <p>Vous disposez d'un droit d'accès, de rectification, d'effacement et d'opposition sur vos données. Pour les exercer, contactez-nous à <a href="mailto:contact@habitatscore.fr">contact@habitatscore.fr</a>. Vous pouvez également introduire une réclamation auprès de la <a href="https://www.cnil.fr/fr/plaintes">CNIL</a>.</p>
+
+  <h2>9. Contact</h2>
   <p>Pour toute question relative à cette politique : <a href="mailto:contact@habitatscore.fr">contact@habitatscore.fr</a></p>
 </body>
 </html>

@@ -1,4 +1,4 @@
-const API_URL = "https://immoscore-api-pppe.onrender.com";
+const API_URL = "https://habitatscore-api.onrender.com";
 
 function couleurScore(score) {
   if (score >= 65) return "#27AE60";
