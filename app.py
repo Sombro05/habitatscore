@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from streamlit_folium import st_folium
 from scipy.stats import gaussian_kde as scipy_kde
-from scoring import scorer, calculer_frais_notaire, calculer_budget_dpe, FRAIS_NOTAIRE_ANCIEN, BUDGET_DPE
+from scoring import scorer, calculer_frais_notaire, calculer_budget_dpe, FRAIS_NOTAIRE_ANCIEN, BUDGET_DPE, PART_CHARGES_RECUPERABLES
 from tracker import track, feedback
 from data import charger_villes, charger_kde, charger_geojson_cache, charger_carte_data, charger_pays_voisins, charger_geojson_epci, charger_ventes_commune, get_labels_uniques, get_row, get_prix_kde
 import uuid
@@ -158,7 +158,9 @@ if page == "Analyser un bien":
         loyer = None
         if usage == "Location":
             loyer = c_loyer[0].number_input(
-                "Loyer mensuel (€)", help=f"Loyer de marché : {loyer_m2_estime:.1f} €/m²",
+                "Loyer mensuel charges comprises (€)",
+                help=f"Loyer de marché : {loyer_m2_estime:.1f} €/m² charges comprises. Le rendement est "
+                     f"calculé hors charges récupérables ({PART_CHARGES_RECUPERABLES[type_bien]:.1%})".replace(".", ","),
                 value=int(loyer_m2_estime * surface), step=10
             )
 
@@ -335,7 +337,9 @@ if page == "Analyser un bien":
 # ════════════════════════════════════════════
 else:
     st.title("Explorer le marché")
-    st.caption("Carte des rendements estimés par commune (2023–2025)")
+    st.caption("Carte des rendements estimés par commune (2023–2025) ; grandes villes découpées en quartiers. "
+               "Écarts de loyer entre quartiers : observatoires locaux des loyers, encadrement des loyers "
+               "(Ville de Paris – ODbL, Métropole de Lyon).")
 
     import json
     import branca.colormap as cm
@@ -364,7 +368,8 @@ else:
         cle_val = "val_" + col_val
         valeurs = pd.Series([f["properties"][cle_val] for f in geojson["features"]])
     else:
-        geojson = charger_geojson_cache(type_carte, col_val)
+        # Grandes villes découpées en quartiers « Ville : Quartier » (21_prep_carte_quartiers.py)
+        geojson = charger_geojson_cache(type_carte, col_val + "_quartiers")
         cle_val = "val"
         valeurs = carte.loc[carte["type_local"] == type_carte, col_val]
 
@@ -420,8 +425,8 @@ else:
         tooltip=folium.GeoJsonTooltip(
             fields=["nom", "rendement", "prix_m2", "loyer_m2", "vacance", "rotation"]
                    + (["ventes"] if par_epci else []),
-            aliases=["Intercommunalité" if par_epci else "Commune", "Rendement estimé",
-                     "Prix médian / m²", "Loyer médian / m²", "Vacance locative", "Taux de rotation"]
+            aliases=["Intercommunalité" if par_epci else "Commune / quartier", "Rendement estimé",
+                     "Prix médian / m²", "Loyer / m² (charges comprises)", "Vacance locative", "Taux de rotation"]
                     + (["Ventes analysées"] if par_epci else []),
             localize=True,
         ),

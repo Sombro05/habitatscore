@@ -10,6 +10,17 @@ BUDGET_DPE = {
     "G": 800,
 }
 
+# Loyers ANIL et loyers d'annonce : charges comprises. Le rendement se calcule hors charges
+# récupérables (eau, chauffage collectif, entretien…), payées par le locataire mais reversées.
+# Mesure (oct. 2026) : loyer hors charges des locataires de moins d'un an des observatoires locaux
+# des loyers / loyer ANIL, médiane sur 214 zones : 0,895 (appartements), 0,908 (maisons)
+PART_CHARGES_RECUPERABLES = {"Appartement": 0.105, "Maison": 0.09}
+
+
+def loyer_hors_charges(loyer, type_bien):
+    return loyer * (1 - PART_CHARGES_RECUPERABLES.get(type_bien, 0.10))
+
+
 def calculer_frais_notaire(prix_achat, taux=FRAIS_NOTAIRE_ANCIEN):
     return round(prix_achat * taux)
 
@@ -54,10 +65,11 @@ def scorer(
     rdt_brut = rdt_net = rdt_neutre = rdt_ajuste = None
 
     if usage == "Location" and loyer_mensuel:
-        loyer_annuel = loyer_mensuel * 12
+        # Loyer saisi et loyer de marché : charges comprises → hors charges pour le rendement
+        loyer_annuel = loyer_hors_charges(loyer_mensuel, type_bien) * 12
         rdt_brut     = loyer_annuel / (prix_achat + travaux + budget_dpe) * 100
         rdt_net      = loyer_annuel * 0.75 / (prix_achat + travaux + budget_dpe) * 100
-        loyer_marche_an = loyer_m2_estime * surface * 12
+        loyer_marche_an = loyer_hors_charges(loyer_m2_estime, type_bien) * surface * 12
         prix_marche_tot = prix_m2_median * surface
         rdt_neutre      = loyer_marche_an / prix_marche_tot * 100
         # Rendement ajusté du risque de vacance locative (16_prep_vacance.py) et de la faible

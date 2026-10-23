@@ -5,7 +5,8 @@ Pour chaque EPCI et type de bien :
 - prix au m² : médiane des prix communaux (non lissés) pondérée par le nombre de ventes ;
 - loyer au m² : moyenne des loyers communaux pondérée par le nombre de ventes ;
 - vacance locative : logements vacants / (vacants + loués) sur l'ensemble de l'EPCI ;
-- rendement : loyer × 12 / prix × coefficient de vacance (même règle que 16_prep_vacance.py).
+- rendement : loyer hors charges récupérables (scoring.py) × 12 / prix × coefficient de vacance
+  (même règle que 16_prep_vacance.py).
 Contours : union des communes de l'EPCI (communes_small.geojson), anciennes communes
 rattachées via vacance_communes.csv (code_commune_2023).
 
@@ -17,6 +18,8 @@ import json
 import pandas as pd
 from shapely.geometry import mapping, shape
 from shapely.ops import unary_union
+
+from scoring import loyer_hors_charges
 
 SEUIL_VACANCE = 0.30  # identique à 16_prep_vacance.py
 SEUIL_ROTATION, PENTE, PLANCHER = 0.015, 1, 0.25  # identiques à 19_prep_rotation.py
@@ -83,7 +86,7 @@ for type_local in ["Appartement", "Maison"]:
         loyer = (g["loyer_m2_estime"] * g["nb_ventes"]).sum() / g["nb_ventes"].sum()
         info  = par_epci.loc[epci] if epci in par_epci.index else None
         coef  = float(info["coef"] * info["coef_rot"]) if info is not None else 1.0
-        rdt   = loyer * 12 / prix * 100 * coef
+        rdt   = loyer_hors_charges(loyer, type_local) * 12 / prix * 100 * coef
         geom  = mapping(contours[epci])
         geom["coordinates"] = arrondir(json.loads(json.dumps(geom["coordinates"])))
         features.append({"type": "Feature", "geometry": geom, "properties": {

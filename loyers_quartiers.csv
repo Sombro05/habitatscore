@@ -1,0 +1,1045 @@
+code_commune,quartier,coef_loyer,source,couverture
+06088,Arenas,0.962,OLL L0600,1.0
+06088,Ariane,0.842,OLL L0600,1.0
+06088,Baumettes,1.028,OLL L0600,1.0
+06088,Carabacel,1.027,OLL L0600,1.0
+06088,Caucade,1.038,OLL L0600,1.0
+06088,Cimiez,1.085,OLL L0600,1.0
+06088,Crémat-Saint-Roman,1.194,OLL L0600,1.0
+06088,Fabron,1.092,OLL L0600,1.0
+06088,Gairaut,1.081,OLL L0600,1.0
+06088,Gambetta,1.048,OLL L0600,1.0
+06088,Le Piol,0.991,OLL L0600,1.0
+06088,Le Port,1.024,OLL L0600,1.0
+06088,Le Ray,0.929,OLL L0600,1.0
+06088,Libération,0.983,OLL L0600,1.0
+06088,Madeleine,0.97,OLL L0600,1.0
+06088,Mantega,0.972,OLL L0600,1.0
+06088,Mont Boron,1.168,OLL L0600,1.0
+06088,Médecin,1.159,OLL L0600,1.0
+06088,Pasteur,0.927,OLL L0600,1.0
+06088,Pessicart-Saint-Pancrace,1.088,OLL L0600,1.0
+06088,Rimiez,1.053,OLL L0600,1.0
+06088,Riquier,0.984,OLL L0600,1.0
+06088,Roquebillière,0.842,OLL L0600,1.0
+06088,Rue de France,1.085,OLL L0600,1.0
+06088,Saint-Antoine,1.085,OLL L0600,1.0
+06088,Saint-Augustin,0.862,OLL L0600,1.0
+06088,Saint-Isidore-Lingostière,1.081,OLL L0600,1.0
+06088,Saint-Maurice,1.008,OLL L0600,1.0
+06088,Saint-Philippe,1.045,OLL L0600,1.0
+06088,Saint-Pierre de Féric,1.008,OLL L0600,1.0
+06088,Saint-Roch,0.95,OLL L0600,1.0
+06088,Saint-Sylvestre,0.966,OLL L0600,1.0
+06088,Sainte-Marguerite,1.025,OLL L0600,1.0
+06088,Thiers,1.028,OLL L0600,1.0
+06088,Ventabrun,0.92,OLL L0600,1.0
+06088,Vernier,0.915,OLL L0600,1.0
+06088,Vieille Ville,1.046,OLL L0600,1.0
+06088,Vinaigrier,1.194,OLL L0600,1.0
+13001,Centre Ville,1.045,OLL L1300,1.0
+13001,Couronne Urbaine,1.045,OLL L1300,1.0
+13001,Est,1.045,OLL L1300,1.0
+13001,Grand Sud,0.991,OLL L1300,1.0
+13001,Nord,0.995,OLL L1300,1.0
+13001,Ouest 1,0.925,OLL L1300,1.0
+13001,Ouest 2,0.993,OLL L1300,1.0
+13001,Plateau de Puyricard,1.045,OLL L1300,1.0
+13001,Sud,0.973,OLL L1300,1.0
+13055,Arenc,1.004,OLL L1300,1.0
+13055,Baille,1.013,OLL L1300,1.0
+13055,Belle de Mai,0.923,OLL L1300,1.0
+13055,Belsunce,0.93,OLL L1300,1.0
+13055,Bompard,1.183,OLL L1300,1.0
+13055,Bon Secours,0.916,OLL L1300,1.0
+13055,Bonneveine,1.158,OLL L1300,1.0
+13055,Carpiagne,0.948,OLL L1300,1.0
+13055,Castellane,0.985,OLL L1300,1.0
+13055,Chapitre,0.937,OLL L1300,1.0
+13055,Chutes Lavie,0.992,OLL L1300,1.0
+13055,Château-Gombert,0.944,OLL L1300,1.0
+13055,Cinq Avenues,0.992,OLL L1300,1.0
+13055,Endoume,1.158,OLL L1300,1.0
+13055,Grands Carmes,0.953,OLL L1300,1.0
+13055,Hôtel de Ville,1.02,OLL L1300,1.0
+13055,L'Estaque,1.042,OLL L1300,1.0
+13055,La Barasse,0.932,OLL L1300,1.0
+13055,La Blancarde,0.983,OLL L1300,1.0
+13055,La Cabucelle,0.916,OLL L1300,1.0
+13055,La Calade,0.884,OLL L1300,1.0
+13055,La Capelette,0.964,OLL L1300,1.0
+13055,La Conception,1.004,OLL L1300,1.0
+13055,La Croix Rouge,0.992,OLL L1300,1.0
+13055,La Delorme,0.908,OLL L1300,1.0
+13055,La Fourragère,1.052,OLL L1300,1.0
+13055,La Joliette,0.954,OLL L1300,1.0
+13055,La Millière,0.976,OLL L1300,1.0
+13055,La Panouse,0.977,OLL L1300,1.0
+13055,La Plage,1.259,OLL L1300,1.0
+13055,La Pomme,1.0,OLL L1300,1.0
+13055,La Rose,0.931,OLL L1300,1.0
+13055,La Timone,0.996,OLL L1300,1.0
+13055,La Treille,1.107,OLL L1300,1.0
+13055,La Valbarelle,0.983,OLL L1300,1.0
+13055,La Valentine,1.131,OLL L1300,1.0
+13055,La Vilette,0.967,OLL L1300,1.0
+13055,La Viste,0.884,OLL L1300,1.0
+13055,Le Cabot,1.03,OLL L1300,1.0
+13055,Le Camas,0.99,OLL L1300,1.0
+13055,Le Canet,0.906,OLL L1300,1.0
+13055,Le Merlan,0.997,OLL L1300,1.0
+13055,Le Pharo,1.054,OLL L1300,1.0
+13055,Le Redon,0.967,OLL L1300,1.0
+13055,Le Rouet,1.04,OLL L1300,1.0
+13055,Les Accates,1.107,OLL L1300,1.0
+13055,Les Arnavaux,0.924,OLL L1300,1.0
+13055,Les Aygalades,0.99,OLL L1300,1.0
+13055,Les Baumettes,0.996,OLL L1300,1.0
+13055,Les Borels,0.992,OLL L1300,1.0
+13055,Les Caillols,1.054,OLL L1300,1.0
+13055,Les Camoins,1.107,OLL L1300,1.0
+13055,Les Chartreux,0.948,OLL L1300,1.0
+13055,Les Crottes,0.916,OLL L1300,1.0
+13055,Les Goudes,1.052,OLL L1300,1.0
+13055,Les Mourets,1.052,OLL L1300,1.0
+13055,Les Médecins,1.004,OLL L1300,1.0
+13055,Les Olives,1.016,OLL L1300,1.0
+13055,Les Riaux,1.107,OLL L1300,1.0
+13055,Les Trois Lucs,1.052,OLL L1300,1.0
+13055,Les îles,0.884,OLL L1300,1.0
+13055,Lodi,1.016,OLL L1300,1.0
+13055,Malpasse,0.884,OLL L1300,1.0
+13055,Mazargues,1.053,OLL L1300,1.0
+13055,Menpenti,1.028,OLL L1300,1.0
+13055,Montolivet,1.069,OLL L1300,1.0
+13055,Montredon,1.107,OLL L1300,1.0
+13055,Noailles,0.924,OLL L1300,1.0
+13055,Notre Dame Limite,0.927,OLL L1300,1.0
+13055,Notre-Dame-du-Mont,0.996,OLL L1300,1.0
+13055,Opéra,1.004,OLL L1300,1.0
+13055,Palais de Justice,1.054,OLL L1300,1.0
+13055,Palama,1.052,OLL L1300,1.0
+13055,Pointe Rouge,1.099,OLL L1300,1.0
+13055,Pont de Vivaux,0.992,OLL L1300,1.0
+13055,Préfecture,0.964,OLL L1300,1.0
+13055,Périer,1.182,OLL L1300,1.0
+13055,Roucas Blanc,1.259,OLL L1300,1.0
+13055,Saint André,0.98,OLL L1300,1.0
+13055,Saint Barnabé,1.064,OLL L1300,1.0
+13055,Saint-Antoine,0.945,OLL L1300,1.0
+13055,Saint-Barthélemy,0.903,OLL L1300,1.0
+13055,Saint-Charles,0.959,OLL L1300,1.0
+13055,Saint-Giniez,1.115,OLL L1300,1.0
+13055,Saint-Henri,0.956,OLL L1300,1.0
+13055,Saint-Jean du Désert,1.004,OLL L1300,1.0
+13055,Saint-Joseph,0.964,OLL L1300,1.0
+13055,Saint-Julien,1.042,OLL L1300,1.0
+13055,Saint-Just,0.922,OLL L1300,1.0
+13055,Saint-Jérome,0.97,OLL L1300,1.0
+13055,Saint-Lambert,1.016,OLL L1300,1.0
+13055,Saint-Lazare,0.935,OLL L1300,1.0
+13055,Saint-Louis,0.884,OLL L1300,1.0
+13055,Saint-Loup,1.011,OLL L1300,1.0
+13055,Saint-Marcel,1.025,OLL L1300,1.0
+13055,Saint-Mauron,0.895,OLL L1300,1.0
+13055,Saint-Menet,0.968,OLL L1300,1.0
+13055,Saint-Mitre,0.999,OLL L1300,1.0
+13055,Saint-Pierre,0.996,OLL L1300,1.0
+13055,Saint-Tronc,0.975,OLL L1300,1.0
+13055,Saint-Victor,1.02,OLL L1300,1.0
+13055,Sainte-Anne,1.076,OLL L1300,1.0
+13055,Sainte-Marguerite,1.0,OLL L1300,1.0
+13055,Sainte-Marthe,0.967,OLL L1300,1.0
+13055,Sormiou,1.018,OLL L1300,1.0
+13055,Thiers,0.98,OLL L1300,1.0
+13055,Vauban,1.016,OLL L1300,1.0
+13055,Vaufrèges,1.103,OLL L1300,1.0
+13055,Verduron,1.001,OLL L1300,1.0
+13055,Vieille Chapelle,1.068,OLL L1300,1.0
+13055,Éoures,1.259,OLL L1300,1.0
+14118,Bas Venoix-Prairie,1.0,,0.0
+14118,Calvaire Saint-Pierre,1.0,,0.0
+14118,Centre Ancien,1.0,,0.0
+14118,Chemin Vert,1.0,,0.0
+14118,Hastings,1.0,,0.0
+14118,La Folie Couvrechef,1.0,,0.0
+14118,La Grâce de Dieu,1.0,,0.0
+14118,La Guérinière,1.0,,0.0
+14118,La Haie Vigne,1.0,,0.0
+14118,La Maladrerie-Saint-Paul,1.0,,0.0
+14118,La Pierre Heuze,1.0,,0.0
+14118,Le Port,1.0,,0.0
+14118,Saint-Gilles,1.0,,0.0
+14118,Saint-Jean,1.0,,0.0
+14118,Saint-Ouen,1.0,,0.0
+14118,Sainte-Thérèse-Demi-Lune,1.0,,0.0
+14118,Université,1.0,,0.0
+14118,Vaucelles,1.0,,0.0
+14118,Venoix,1.0,,0.0
+14118,Verte Vallée,1.0,,0.0
+21231,Arsenal,1.0,,0.0
+21231,Bourroches,1.0,,0.0
+21231,Centre Nord,1.0,,0.0
+21231,Centre Sud,1.0,,0.0
+21231,Ensemble Zones d’Activité,1.0,,0.0
+21231,Faubourg Nord,1.0,,0.0
+21231,Faubourg Sud,1.0,,0.0
+21231,Fontaine d’Ouche,1.0,,0.0
+21231,Hôpital,1.0,,0.0
+21231,Jouvence,1.0,,0.0
+21231,La Montagne,1.0,,0.0
+21231,Les Gresilles,1.0,,0.0
+21231,Les Perrières,1.0,,0.0
+21231,Maladière,1.0,,0.0
+21231,Montchapet,1.0,,0.0
+21231,Montmuzard,1.0,,0.0
+21231,Parc,1.0,,0.0
+21231,Pouilly,1.0,,0.0
+21231,Poussots,1.0,,0.0
+21231,Universités,1.0,,0.0
+21231,Zone de Loisirs,1.0,,0.0
+25056,Battant,1.068,OLL L2500,0.98
+25056,Bregille,1.039,OLL L2500,0.98
+25056,Butte-Grette,1.039,OLL L2500,0.98
+25056,Centre-Chapelle des Buis,1.068,OLL L2500,0.98
+25056,Chailluz,1.0,,0.98
+25056,Chaprais-Cras,1.039,OLL L2500,0.98
+25056,Montrapon-Monboucons,0.961,OLL L2500,0.98
+25056,Palente-Orchamps-Saragosse,0.961,OLL L2500,0.98
+25056,Planoise-Châteaufarine,0.969,OLL L2500,0.98
+25056,Saint-Claude-Torcols,0.977,OLL L2500,0.98
+25056,Saint-Ferjeux-Rosemont,1.013,OLL L2500,0.98
+25056,Tilleroyes,1.039,OLL L2500,0.98
+25056,Vaite-Clairs Soleils,0.961,OLL L2500,0.98
+25056,Velotte,0.961,OLL L2500,0.98
+30189,Cadereau,1.041,OLL L3000,1.0
+30189,Carèmeau,1.0,OLL L3000,1.0
+30189,Centre Ville,0.998,OLL L3000,1.0
+30189,Chemin bas d'Avignon,0.977,OLL L3000,1.0
+30189,Costières,0.991,OLL L3000,1.0
+30189,Faubourg,0.998,OLL L3000,1.0
+30189,Garrigues,1.041,OLL L3000,1.0
+30189,Grézan,0.986,OLL L3000,1.0
+30189,Kennedy,0.998,OLL L3000,1.0
+30189,Les 3 ponts,1.041,OLL L3000,1.0
+30189,Mont Duplan,1.023,OLL L3000,1.0
+30189,Pissevin,0.977,OLL L3000,1.0
+30189,Quartier Administrations,0.986,OLL L3000,1.0
+30189,Quartier des Espesses,1.041,OLL L3000,1.0
+30189,Route d'Arles,0.983,OLL L3000,1.0
+30189,Route de Beaucaire,0.977,OLL L3000,1.0
+30189,Santa-Cruz,0.98,OLL L3000,1.0
+30189,Valdegour,0.977,OLL L3000,1.0
+31555,Amidonniers,1.042,OLL L3100,1.0
+31555,Arnaud Bernard,1.184,OLL L3100,1.0
+31555,Arènes,0.971,OLL L3100,1.0
+31555,Bagatelle,0.897,OLL L3100,1.0
+31555,Barrière-de-Paris,0.939,OLL L3100,1.0
+31555,Basso-Cambo,0.971,OLL L3100,1.0
+31555,Bellefontaine,0.884,OLL L3100,1.0
+31555,Bonnefoy,0.947,OLL L3100,1.0
+31555,Capitole,1.184,OLL L3100,1.0
+31555,Carmes,1.184,OLL L3100,1.0
+31555,Casselardit,1.024,OLL L3100,1.0
+31555,Château-de-l'Hers,0.979,OLL L3100,1.0
+31555,Compans,1.184,OLL L3100,1.0
+31555,Croix-Daurade,0.925,OLL L3100,1.0
+31555,Croix-de-Pierre,0.942,OLL L3100,1.0
+31555,Côte Pavée,1.077,OLL L3100,1.0
+31555,Empalot,0.904,OLL L3100,1.0
+31555,Faourette,0.884,OLL L3100,1.0
+31555,Fer-à-Cheval,1.042,OLL L3100,1.0
+31555,Fontaine-Lestang,0.923,OLL L3100,1.0
+31555,Ginestous,0.884,OLL L3100,1.0
+31555,Gramont,0.884,OLL L3100,1.0
+31555,Guilhemery,1.024,OLL L3100,1.0
+31555,Jules-Julien,0.971,OLL L3100,1.0
+31555,Juncasse-Argoulets,0.926,OLL L3100,1.0
+31555,La Cépière,0.927,OLL L3100,1.0
+31555,La Fourguette,0.884,OLL L3100,1.0
+31555,La Terrasse,0.979,OLL L3100,1.0
+31555,Lalande,0.884,OLL L3100,1.0
+31555,Lardenne,0.947,OLL L3100,1.0
+31555,Le Busca,1.184,OLL L3100,1.0
+31555,Les Chalets,1.184,OLL L3100,1.0
+31555,Les Izards,0.884,OLL L3100,1.0
+31555,Les Pradettes,0.927,OLL L3100,1.0
+31555,Marengo-Jolimont,1.015,OLL L3100,1.0
+31555,Matabiau,1.113,OLL L3100,1.0
+31555,Minimes,0.971,OLL L3100,1.0
+31555,Mirail-Université,0.884,OLL L3100,1.0
+31555,Montaudran-Lespinet,0.926,OLL L3100,1.0
+31555,Papus,0.884,OLL L3100,1.0
+31555,Patte d'Oie,1.065,OLL L3100,1.0
+31555,Pont-des-Demoiselles,1.024,OLL L3100,1.0
+31555,Pouvourville,1.042,OLL L3100,1.0
+31555,Purpan,0.947,OLL L3100,1.0
+31555,Ramier,0.884,OLL L3100,1.0
+31555,Rangueil-C.H.U.-Facultés,1.027,OLL L3100,1.0
+31555,Reynerie,0.884,OLL L3100,1.0
+31555,Roseraie,0.965,OLL L3100,1.0
+31555,Saint-Agne,1.042,OLL L3100,1.0
+31555,Saint-Aubin-Dupuy,1.184,OLL L3100,1.0
+31555,Saint-Cyprien,1.184,OLL L3100,1.0
+31555,Saint-Georges,1.184,OLL L3100,1.0
+31555,Saint-Martin-du-Touch,0.923,OLL L3100,1.0
+31555,Saint-Michel,1.089,OLL L3100,1.0
+31555,Saint-Simon,0.904,OLL L3100,1.0
+31555,Saint-Étienne,1.184,OLL L3100,1.0
+31555,Sauzelong-Rangueil,0.999,OLL L3100,1.0
+31555,Sept Deniers,1.042,OLL L3100,1.0
+31555,Soupetard,0.947,OLL L3100,1.0
+31555,Zones d'Activités Sud,0.884,OLL L3100,1.0
+33063,Bacalan,0.891,OLL L3300,1.0
+33063,Capucins-Victoire,1.016,OLL L3300,1.0
+33063,Chartrons-Grand Parc,0.987,OLL L3300,1.0
+33063,Gare Saint-Jean,0.934,OLL L3300,1.0
+33063,Hôtel de Ville-Quinconces,1.086,OLL L3300,1.0
+33063,La Bastide,0.912,OLL L3300,1.0
+33063,Le Lac,0.909,OLL L3300,1.0
+33063,Lestonat-Monséjour,0.963,OLL L3300,1.0
+33063,Nansouty,1.024,OLL L3300,1.0
+33063,Saint-Augustin,0.97,OLL L3300,1.0
+33063,Saint-Bruno-Saint-Victor,1.064,OLL L3300,1.0
+33063,Saint-Seurin-Fondaudège,1.074,OLL L3300,1.0
+33063,Villa Primerose-Parc Bordelais-Cauderan,0.991,OLL L3300,1.0
+34172,Aiguelongue,1.069,OLL L3400,1.0
+34172,Aiguerelles,1.004,OLL L3400,1.0
+34172,Alco,0.955,OLL L3400,1.0
+34172,Antigone,1.004,OLL L3400,1.0
+34172,Boutonnet,1.072,OLL L3400,1.0
+34172,Celleneuve,0.893,OLL L3400,1.0
+34172,Centre Historique,1.073,OLL L3400,1.0
+34172,Estanove,0.963,OLL L3400,1.0
+34172,Figuerolles,0.944,OLL L3400,1.0
+34172,Gambetta,1.035,OLL L3400,1.0
+34172,Gares,1.007,OLL L3400,1.0
+34172,Hopitaux-Facultés,1.06,OLL L3400,1.0
+34172,La Chamberte,1.002,OLL L3400,1.0
+34172,La Comédie,1.074,OLL L3400,1.0
+34172,La Croix d'Argent,0.983,OLL L3400,1.0
+34172,La Martelle,0.918,OLL L3400,1.0
+34172,La Paillade,0.893,OLL L3400,1.0
+34172,La Pompignane,1.038,OLL L3400,1.0
+34172,Lemasson,0.91,OLL L3400,1.0
+34172,Les Arceaux,1.071,OLL L3400,1.0
+34172,Les Aubes,0.947,OLL L3400,1.0
+34172,Les Beaux Arts,1.072,OLL L3400,1.0
+34172,Les Cévennes,1.004,OLL L3400,1.0
+34172,Les Hauts de Massane,0.946,OLL L3400,1.0
+34172,Millénaire-Grammont,1.067,OLL L3400,1.0
+34172,Pas du Loup,0.918,OLL L3400,1.0
+34172,Plan des Quatre Seigneurs,1.002,OLL L3400,1.0
+34172,Port Marianne,1.074,OLL L3400,1.0
+34172,Prés d'Arènes,0.893,OLL L3400,1.0
+34172,Saint-Martin,0.947,OLL L3400,1.0
+35238,Beaulieu-Baud,1.027,OLL L3500,0.96
+35238,Brequigny,0.887,OLL L3500,0.96
+35238,Centre,1.136,OLL L3500,0.96
+35238,Cleunay-Arsenal-Redon,1.013,OLL L3500,0.96
+35238,Francisco Ferrer-Vern-Poterie,0.988,OLL L3500,0.96
+35238,Le Blosne,0.827,OLL L3500,0.96
+35238,Maurepas-Patton-Les Gayeulles,0.962,OLL L3500,0.96
+35238,Moulin du Comte,1.09,OLL L3500,0.96
+35238,Nord Saint-Martin,1.031,OLL L3500,0.96
+35238,Sud Gare,1.02,OLL L3500,0.96
+35238,Thabor Saint-Hélier,1.119,OLL L3500,0.96
+35238,Villejean-Beauregard,0.914,OLL L3500,0.96
+37261,Beaujardin,0.922,OLL L3700,1.0
+37261,Cathédrale,1.113,OLL L3700,1.0
+37261,Centre,1.113,OLL L3700,1.0
+37261,Deux Lions-Gloriette,1.0,OLL L3700,1.0
+37261,Douets-Milletière,0.948,OLL L3700,1.0
+37261,Europe,0.922,OLL L3700,1.0
+37261,Febvotte-Marat,1.0,OLL L3700,1.0
+37261,Giraudeau,1.0,OLL L3700,1.0
+37261,Grammont,1.085,OLL L3700,1.0
+37261,La Bergeonnerie,0.922,OLL L3700,1.0
+37261,La Fuye Velpeau,1.056,OLL L3700,1.0
+37261,Lakanal-Strasbourg,1.056,OLL L3700,1.0
+37261,Lamartine,1.113,OLL L3700,1.0
+37261,Les Fontaines,0.922,OLL L3700,1.0
+37261,Montjoyeux,0.922,OLL L3700,1.0
+37261,Paul Bert,1.0,OLL L3700,1.0
+37261,Rabelais-Tonnellé,1.056,OLL L3700,1.0
+37261,Rives du Cher,0.922,OLL L3700,1.0
+37261,Rochepinard,0.922,OLL L3700,1.0
+37261,Saint-Symphorien,0.984,OLL L3700,1.0
+37261,Sainte-Radegonde,1.0,OLL L3700,1.0
+37261,Sanitas-Rotonde,0.96,OLL L3700,1.0
+38185,Secteur 1,1.018,OLL L3800,1.0
+38185,Secteur 2,1.053,OLL L3800,1.0
+38185,Secteur 3,0.971,OLL L3800,1.0
+38185,Secteur 4,0.988,OLL L3800,1.0
+38185,Secteur 5,0.973,OLL L3800,1.0
+38185,Secteur 6,0.966,OLL L3800,1.0
+42218,Beaubrun-Tarentaise,1.096,OLL L4200,1.0
+42218,Beaulieu-Montchovet-Marandinière,0.969,OLL L4200,1.0
+42218,Bel Air-Le Golf-Côte Chaude,0.969,OLL L4200,1.0
+42218,Bellevue-Le Mont-La Jomayère,0.969,OLL L4200,1.0
+42218,Centre Deux,0.969,OLL L4200,1.0
+42218,Centre Ville,1.096,OLL L4200,1.0
+42218,Châteaucreux-Saint-François-Monthieu,0.969,OLL L4200,1.0
+42218,Cotonne-Devey-Malacussy,0.969,OLL L4200,1.0
+42218,Crêt de Roch,1.096,OLL L4200,1.0
+42218,Jacquard-Préfecture,1.096,OLL L4200,1.0
+42218,La Richelandière-Monplaisir,0.969,OLL L4200,1.0
+42218,Le Marais-Méons-Grangeneuve,0.969,OLL L4200,1.0
+42218,Le Soleil,0.969,OLL L4200,1.0
+42218,Montaud-Le Grand Clos,0.969,OLL L4200,1.0
+42218,Montreynaud,0.969,OLL L4200,1.0
+42218,Portail Rouge-La Métare,0.969,OLL L4200,1.0
+42218,Rochetaillée,0.969,OLL L4200,1.0
+42218,Saint-Roch-Badouillère-Chavanelle,1.096,OLL L4200,1.0
+42218,Saint-Victor,0.969,OLL L4200,1.0
+42218,Tardy Colline des Pères,1.096,OLL L4200,1.0
+42218,Terrasse-Bergson-Carnot,0.969,OLL L4200,1.0
+42218,Terrenoire,0.969,OLL L4200,1.0
+42218,Valbenoîte-Le Bernay-Valfuret,0.969,OLL L4200,1.0
+42218,Villebœuf-Fauriel-Vivaraise,0.969,OLL L4200,1.0
+44109,Breil-Barberie,0.994,OLL L4400,1.0
+44109,Centre Ville,1.069,OLL L4400,1.0
+44109,Chantenay-Bellevue-Sainte-Anne,0.95,OLL L4400,1.0
+44109,Dervallières-Zola,1.011,OLL L4400,1.0
+44109,Doulon-Bottière,0.976,OLL L4400,1.0
+44109,Hauts Pavé-Saint-Félix,1.061,OLL L4400,1.0
+44109,Ile de Nantes,0.989,OLL L4400,1.0
+44109,Nantes Erdre,0.994,OLL L4400,1.0
+44109,Quartiers Nord,0.972,OLL L4400,1.0
+44109,Quartiers Sud,0.95,OLL L4400,1.0
+44109,Saint-Donatien-Malakoff,1.011,OLL L4400,1.0
+45234,Argonne,1.0,,0.0
+45234,Barrière Saint-Marc,1.0,,0.0
+45234,Bourgogne,1.0,,0.0
+45234,Bretonnerie,1.0,,0.0
+45234,Carmes Nord,1.0,,0.0
+45234,Carmes Sud,1.0,,0.0
+45234,Châteaudun Bannier,1.0,,0.0
+45234,Cigogne Roseraie,1.0,,0.0
+45234,Dauphine,1.0,,0.0
+45234,Jardin des Plantes,1.0,,0.0
+45234,La Madeleine,1.0,,0.0
+45234,La Source H.L.M. Nord,1.0,,0.0
+45234,La Source H.L.M. Sud,1.0,,0.0
+45234,La Source La Dalle,1.0,,0.0
+45234,La Source Pavillons Campus,1.0,,0.0
+45234,Les Blossieres,1.0,,0.0
+45234,Les Murlins,1.0,,0.0
+45234,Saint-Marc,1.0,,0.0
+45234,Saint-Marceau,1.0,,0.0
+45234,Saint-Vincent,1.0,,0.0
+45234,Sud Loire,1.0,,0.0
+49007,Belle Beille,1.0,,0.0
+49007,Capucins Verneau,1.0,,0.0
+49007,Centre,1.0,,0.0
+49007,Deux Croix Banchais,1.0,,0.0
+49007,Justices,1.0,,0.0
+49007,La Fayette Eblé,1.0,,0.0
+49007,Lac de Maine,1.0,,0.0
+49007,Monplaisir,1.0,,0.0
+49007,Roseraie Orgemont,1.0,,0.0
+49007,Saint-Jacques Nazareth,1.0,,0.0
+49007,Saint-Léonard Madeleine,1.0,,0.0
+49007,Saint-Serge,1.0,,0.0
+51454,Barbatre,1.0,,0.0
+51454,Bois d'Amour,1.0,,0.0
+51454,Case Fayère,1.0,,0.0
+51454,Cathédrale,1.0,,0.0
+51454,Centre Erlon,1.0,,0.0
+51454,Centre Hospitalier Régional Debré,1.0,,0.0
+51454,Cernay,1.0,,0.0
+51454,Châtillons,1.0,,0.0
+51454,Cité Jardin Charles Arnould,1.0,,0.0
+51454,Cité Jardin Maison Blanche,1.0,,0.0
+51454,Cité Jardin-Chemin Vert,1.0,,0.0
+51454,Clairmarais,1.0,,0.0
+51454,Coutures,1.0,,0.0
+51454,Croix du Sud,1.0,,0.0
+51454,Croix-Rouge Université,1.0,,0.0
+51454,Cérès,1.0,,0.0
+51454,Europe,1.0,,0.0
+51454,Fac des Sciences,1.0,,0.0
+51454,Hincmar,1.0,,0.0
+51454,Jamin,1.0,,0.0
+51454,La Neuvillette Activités,1.0,,0.0
+51454,La Neuvillette Habitat,1.0,,0.0
+51454,Laon Nord,1.0,,0.0
+51454,Laon Sud,1.0,,0.0
+51454,Lesage,1.0,,0.0
+51454,Lundy,1.0,,0.0
+51454,Maison Blanche Grand Ensemble,1.0,,0.0
+51454,Maison de Champagne,1.0,,0.0
+51454,Maroc,1.0,,0.0
+51454,Mont d'Arène,1.0,,0.0
+51454,Mulhouse Francois d'Or,1.0,,0.0
+51454,Murigny Nord,1.0,,0.0
+51454,Murigny Sud,1.0,,0.0
+51454,Neufchatel,1.0,,0.0
+51454,Orgeval,1.0,,0.0
+51454,Parc de Vesle,1.0,,0.0
+51454,Pays de France,1.0,,0.0
+51454,Pommery,1.0,,0.0
+51454,Port Sec,1.0,,0.0
+51454,Pôle Technologique Farman Zone Industrielle Sud-Est,1.0,,0.0
+51454,Saint-Remi,1.0,,0.0
+51454,Sainte Anne,1.0,,0.0
+51454,Sainte-Anne,1.0,,0.0
+51454,Terres agricoles,1.0,,0.0
+51454,Trois Fontaines,1.0,,0.0
+51454,Tunisie,1.0,,0.0
+51454,Verrerie,1.0,,0.0
+51454,Wilson,1.0,,0.0
+51454,Z.I. Ouest,1.0,,0.0
+51454,Épinettes,1.0,,0.0
+54395,Beauregard-Boufflers-Buthegnemont,1.0,,1.0
+54395,Boudonville-Scarpone-Libération,1.0,,1.0
+54395,Centre Ville-Charles III,1.0,,1.0
+54395,Haussonville-Blandan-Donop,1.0,,1.0
+54395,Haut-du-Lièvre-Gentilly,1.0,,1.0
+54395,Leopold-Ville-Vieille,1.0,,1.0
+54395,Mon Désert-Jeanne d'Arc,1.0,,1.0
+54395,Poincaré-Foch-Anatole France,1.0,,1.0
+54395,Saint-Fiacre-Trois Maisons-Crosne-Vayringe,1.0,,1.0
+54395,Saint-Pierre-René II-Bonsecours,1.0,,1.0
+54395,Saurupt-Clemenceau,1.0,,1.0
+54395,Stanislas-Meurthe,1.0,,1.0
+57463,Bellecroix,1.0,,0.0
+57463,Borny,1.0,,0.0
+57463,Devant-Les-Ponts,1.0,,0.0
+57463,Grigy Technopole La Grange-aux-Bois,1.0,,0.0
+57463,Les Les îles,1.0,,0.0
+57463,Magny,1.0,,0.0
+57463,Metz Centre 1-Ancienne Ville,1.0,,0.0
+57463,Metz Centre 2-Nouvelle Ville,1.0,,0.0
+57463,Patrotte-Metz Nord,1.0,,0.0
+57463,Plantières-Queuleu,1.0,,0.0
+57463,Sablon,1.0,,0.0
+57463,Vallières-Les Bordes,1.0,,0.0
+59350,Bois Blancs,0.906,OLL L5900,1.0
+59350,Centre,0.964,OLL L5900,1.0
+59350,Faubourg de Béthune,0.918,OLL L5900,1.0
+59350,Grand Quartier 1,0.93,OLL L5900,1.0
+59350,Grand Quartier 3,0.918,OLL L5900,1.0
+59350,Les Sarts,0.964,OLL L5900,1.0
+59350,Lille Centre,1.152,OLL L5900,1.0
+59350,Lille Fives,0.93,OLL L5900,1.0
+59350,Lille Sud,0.86,OLL L5900,1.0
+59350,Mitterie,0.918,OLL L5900,1.0
+59350,Moulins,0.958,OLL L5900,1.0
+59350,Saint-Maurice-Pellevoisin,0.99,OLL L5900,1.0
+59350,Sud Marais,0.841,OLL L5900,1.0
+59350,Vauban-Esquermes,1.09,OLL L5900,1.0
+59350,Vieux Lille,1.179,OLL L5900,1.0
+59350,Wazemmes,1.027,OLL L5900,1.0
+59350,Épine-Mont de Terre,0.946,OLL L5900,1.0
+59512,Anseele-Grand Centre,0.996,OLL L5900,1.0
+59512,Cul de four-E.C.H.O.,0.996,OLL L5900,1.0
+59512,Grand Quartier 1,0.996,OLL L5900,1.0
+59512,Grand Quartier 12,0.996,OLL L5900,1.0
+59512,Grand Quartier 2,0.996,OLL L5900,1.0
+59512,Hommelet,0.996,OLL L5900,1.0
+59512,Moulin-Potennerie,0.996,OLL L5900,1.0
+59512,Nouveau Roubaix-Hauts Champs,0.996,OLL L5900,1.0
+59512,Pile,0.996,OLL L5900,1.0
+59512,Sainte-Élisabeth,0.996,OLL L5900,1.0
+59512,Trois Ponts-Sartel-Carihem,0.996,OLL L5900,1.0
+59512,Vauban-Barbieux-Édouard Vaillant,1.044,OLL L5900,1.0
+59512,Épeule-Trichon,0.996,OLL L5900,1.0
+59599,Belencontre-Phalempins,1.0,,1.0
+59599,Blanc Seau,1.0,,1.0
+59599,Bourgogne,1.0,,1.0
+59599,Brun Pain-Les Francs,1.0,,1.0
+59599,Centre Ville,1.0,,1.0
+59599,Clinquet,1.0,,1.0
+59599,Croix Rouge,1.0,,1.0
+59599,Flocon-Blanche Porte,1.0,,1.0
+59599,Gambetta,1.0,,1.0
+59599,Grand Quartier 11,1.0,,1.0
+59599,Grand Quartier 13,1.0,,1.0
+59599,Grand Quartier 7,1.0,,1.0
+59599,Orions-Pont rompu,1.0,,1.0
+59599,Pont de Neuville,1.0,,1.0
+59599,Virolois,1.0,,1.0
+63113,Blatin,1.012,OLL L6300,1.0
+63113,Centre Ancien,1.103,OLL L6300,1.0
+63113,Champratel-Les Vergnes,0.87,OLL L6300,1.0
+63113,Chanteranne,0.921,OLL L6300,1.0
+63113,Croix de Neyrat,0.853,OLL L6300,1.0
+63113,Ilot 1er Mai,1.053,OLL L6300,1.0
+63113,L'Oradou,0.921,OLL L6300,1.0
+63113,La Fontaine du Bac,1.053,OLL L6300,1.0
+63113,La Gare,0.987,OLL L6300,1.0
+63113,La Gauthière,0.921,OLL L6300,1.0
+63113,La Glacière,1.053,OLL L6300,1.0
+63113,La Pardieu,1.053,OLL L6300,1.0
+63113,La Plaine,0.921,OLL L6300,1.0
+63113,La Pradelle,1.053,OLL L6300,1.0
+63113,Le Brézet,0.921,OLL L6300,1.0
+63113,Les Salins,1.053,OLL L6300,1.0
+63113,Léon Blum-La Raye Dieu,1.053,OLL L6300,1.0
+63113,Montferrand,0.921,OLL L6300,1.0
+63113,Montjuzet,0.965,OLL L6300,1.0
+63113,République,1.053,OLL L6300,1.0
+63113,Sablon-Trudaine,1.053,OLL L6300,1.0
+63113,Saint-Alyre,1.053,OLL L6300,1.0
+63113,Saint-Jacques-Ouest,1.053,OLL L6300,1.0
+63113,Sud-Saint-Jacques,1.053,OLL L6300,1.0
+63113,Vallières,1.053,OLL L6300,1.0
+66136,Bas Vernet Est,1.0,,0.0
+66136,Bas Vernet Ouest,1.0,,0.0
+66136,Centre Historique,1.0,,0.0
+66136,Champs de Mars,1.0,,0.0
+66136,Clos Banet,1.0,,0.0
+66136,Clémenceau,1.0,,0.0
+66136,Gare,1.0,,0.0
+66136,Haut Vernet,1.0,,0.0
+66136,Kennedy,1.0,,0.0
+66136,Las Corbas,1.0,,0.0
+66136,Lunette,1.0,,0.0
+66136,Mailloles,1.0,,0.0
+66136,Moulin à Vent,1.0,,0.0
+66136,Orles-Catalunya,1.0,,0.0
+66136,Platanes,1.0,,0.0
+66136,Porte d'Espagne,1.0,,0.0
+66136,Route de Canet,1.0,,0.0
+66136,Saint-Assiscle,1.0,,0.0
+66136,Saint-Charles,1.0,,0.0
+66136,Saint-Gaudérique,1.0,,0.0
+66136,Saint-Martin,1.0,,0.0
+66136,Université,1.0,,0.0
+67482,Canardière Est,0.947,OLL L6700,0.97
+67482,Canardière Ouest,0.947,OLL L6700,0.97
+67482,Cité de l’Ill,0.947,OLL L6700,0.97
+67482,Contades,1.131,OLL L6700,0.97
+67482,Cronenbourg Est,0.939,OLL L6700,0.97
+67482,Cronenbourg Ouest,0.929,OLL L6700,0.97
+67482,Elsau,0.9,OLL L6700,0.97
+67482,Esplanade,1.054,OLL L6700,0.97
+67482,Forêt noire,1.131,OLL L6700,0.97
+67482,Gare,1.03,OLL L6700,0.97
+67482,Hautepierre,0.904,OLL L6700,0.97
+67482,Kable,1.037,OLL L6700,0.97
+67482,Koenigshoffen Est,0.9,OLL L6700,0.97
+67482,Koenigshoffen Ouest,0.9,OLL L6700,0.97
+67482,Krutenau,1.131,OLL L6700,0.97
+67482,Mairie,1.131,OLL L6700,0.97
+67482,Montagne Verte,0.905,OLL L6700,0.97
+67482,Neudorf Est,0.997,OLL L6700,0.97
+67482,Neudorf Ouest,1.011,OLL L6700,0.97
+67482,Neudorf Sud,1.006,OLL L6700,0.97
+67482,Neuhof,0.912,OLL L6700,0.97
+67482,Orangerie,1.131,OLL L6700,0.97
+67482,Petite France,1.131,OLL L6700,0.97
+67482,Plaine des Bouchers,0.96,OLL L6700,0.97
+67482,Poincaré,1.092,OLL L6700,0.97
+67482,Polygone,0.908,OLL L6700,0.97
+67482,Port du Rhin,0.96,OLL L6700,0.97
+67482,Robertsau,1.092,OLL L6700,0.97
+67482,Stockfeld,0.94,OLL L6700,0.97
+67482,Vauban,1.054,OLL L6700,0.97
+68224,Bourtzwiller Est,1.0,,0.0
+68224,Bourtzwiller Ouest,1.0,,0.0
+68224,Briand-Franklin,1.0,,0.0
+68224,Brustlein,1.0,,0.0
+68224,Centre historique,1.0,,0.0
+68224,Cité,1.0,,0.0
+68224,Coteaux,1.0,,0.0
+68224,Daguerre,1.0,,0.0
+68224,Doller,1.0,,0.0
+68224,Dornach,1.0,,0.0
+68224,Drouot-Barbanegre,1.0,,0.0
+68224,Europe-Nouveau Bassin,1.0,,0.0
+68224,Fonderie,1.0,,0.0
+68224,Fridolin,1.0,,0.0
+68224,Haut Poirier,1.0,,0.0
+68224,Nordfeld,1.0,,0.0
+68224,Rebberg,1.0,,0.0
+68224,Wolf-wagner,1.0,,0.0
+69123,Audibert-Moulin à Vent,0.939,encadrement Lyon,1.0
+69123,Bellecour-Hôtel Dieu,1.081,encadrement Lyon,1.0
+69123,Boucle-Gros Caillou,1.04,encadrement Lyon,1.0
+69123,Carnot-Gailleton,1.081,encadrement Lyon,1.0
+69123,Champvert-La Gravière,0.953,encadrement Lyon,1.0
+69123,Champvert-Mairie,0.925,encadrement Lyon,1.0
+69123,Charmettes-Bellecombe,1.006,encadrement Lyon,1.0
+69123,Chartreux-Saint-Vincent,1.05,encadrement Lyon,1.0
+69123,Cordeliers-Jacobins,1.081,encadrement Lyon,1.0
+69123,Feuillat-Desgenettes,0.999,encadrement Lyon,1.0
+69123,Genas-Monchat,1.001,encadrement Lyon,1.0
+69123,Gorge de Loup-L'Observance,0.957,encadrement Lyon,1.0
+69123,Grand Champ-Jean Perrin,0.925,encadrement Lyon,1.0
+69123,Grand Quartier 1,1.031,encadrement Lyon,1.0
+69123,Grand Quartier 3,1.081,encadrement Lyon,1.0
+69123,Grand Quartier 4,0.988,encadrement Lyon,1.0
+69123,Grand Quartier 6,0.982,encadrement Lyon,1.0
+69123,Grand Quartier 7,0.966,encadrement Lyon,1.0
+69123,Grand Quartier 8,0.939,encadrement Lyon,1.0
+69123,Grand Trou-Saint-Jean de Dieu,0.944,encadrement Lyon,1.0
+69123,Grande côte-Annonciade,1.035,encadrement Lyon,1.0
+69123,Grange Rouge-Viviani,0.925,encadrement Lyon,1.0
+69123,Griffon-Royale,1.02,encadrement Lyon,1.0
+69123,Hénon-Mairie,1.06,encadrement Lyon,1.0
+69123,Hôpital-Place Croix Rousse,1.05,encadrement Lyon,1.0
+69123,Jean Moulin-Marius Berliet,1.006,encadrement Lyon,1.0
+69123,Jules Ferry-Récamier,1.06,encadrement Lyon,1.0
+69123,La Buire-Bataille,0.957,encadrement Lyon,1.0
+69123,La Duchère,0.925,encadrement Lyon,1.0
+69123,La Mouche-Le Port,0.925,encadrement Lyon,1.0
+69123,La Sarra-Saint-Just,0.966,encadrement Lyon,1.0
+69123,Le Bourg-Gare de Vaise,0.966,encadrement Lyon,1.0
+69123,Le Parc-L'Helvétie,1.081,encadrement Lyon,1.0
+69123,Mairie-Martinière,1.081,encadrement Lyon,1.0
+69123,Mairie-Mermoz,0.939,encadrement Lyon,1.0
+69123,Maréchal Lyautey-Vitton,1.081,encadrement Lyon,1.0
+69123,Molière-Edgard Quinet,1.081,encadrement Lyon,1.0
+69123,Molière-Vauban,1.081,encadrement Lyon,1.0
+69123,Montplaisir-Bachut,1.01,encadrement Lyon,1.0
+69123,Ménival-La Plaine,0.925,encadrement Lyon,1.0
+69123,Part Dieu-Bir Hakeim,1.02,encadrement Lyon,1.0
+69123,Perrache-Charlemagne,0.999,encadrement Lyon,1.0
+69123,Point du Jour-Acqueducs,0.944,encadrement Lyon,1.0
+69123,Provinces-Chavril,0.995,encadrement Lyon,1.0
+69123,Puvis de Chavannes-Le Lycée,1.081,encadrement Lyon,1.0
+69123,Richard Vitton-Chambovet,0.959,encadrement Lyon,1.0
+69123,Saint-Michel-Mairie,0.988,encadrement Lyon,1.0
+69123,Salengro-Marietton,0.953,encadrement Lyon,1.0
+69123,Santy-La Plaine,0.944,encadrement Lyon,1.0
+69123,Stalingrad-Lamothe,0.979,encadrement Lyon,1.0
+69123,Terreaux-Bat d'Argent,1.081,encadrement Lyon,1.0
+69123,Victor Bach-Saint-Louis,0.992,encadrement Lyon,1.0
+69123,Vieux Lyon-Quarantaine,1.035,encadrement Lyon,1.0
+69123,Villette Gare,0.984,encadrement Lyon,1.0
+69123,Villette-Maisons Neuves,0.992,encadrement Lyon,1.0
+69123,Voltaire-Saint-Amour,1.008,encadrement Lyon,1.0
+69123,Ypres-Serein,1.02,encadrement Lyon,1.0
+69123,Yves Farges-Le Fleuve,0.944,encadrement Lyon,1.0
+69123,États-Unis-Le Bocage,0.939,encadrement Lyon,1.0
+69266,Buers,0.981,encadrement Lyon,1.0
+69266,Charpenne-Charmette,1.0,encadrement Lyon,1.0
+69266,Croix Luizet,1.041,encadrement Lyon,1.0
+69266,Cusset,0.986,encadrement Lyon,1.0
+69266,Doua,1.006,encadrement Lyon,1.0
+69266,Einstein-Salengro,1.0,encadrement Lyon,1.0
+69266,Ferrandière-Maisons Neuves,1.004,encadrement Lyon,1.0
+69266,Grandclément,1.0,encadrement Lyon,1.0
+69266,Gratte Ciel,1.041,encadrement Lyon,1.0
+69266,Les Poulettes,1.004,encadrement Lyon,1.0
+69266,Léon Blum-Bon Coin,0.993,encadrement Lyon,1.0
+69266,Perralière,0.986,encadrement Lyon,1.0
+69266,Poudrette-Les Brosses,0.978,encadrement Lyon,1.0
+69266,République-Tolstoï,1.0,encadrement Lyon,1.0
+69266,Saint-Jean,0.971,encadrement Lyon,1.0
+69266,Tonkin Nord,1.014,encadrement Lyon,1.0
+69266,Tonkin Sud,1.035,encadrement Lyon,1.0
+69266,Zola-Pressense,1.006,encadrement Lyon,1.0
+72181,Bollée,1.0,,0.0
+72181,Circuit,1.0,,0.0
+72181,Flore,1.0,,0.0
+72181,Funay-Bruyères,1.0,,0.0
+72181,Gazonfier,1.0,,0.0
+72181,Heuzé-Saint-Georges,1.0,,0.0
+72181,Jaurès,1.0,,0.0
+72181,Libération,1.0,,0.0
+72181,Madeleine,1.0,,0.0
+72181,Maillets-Bellevue,1.0,,0.0
+72181,Miroir-Batignolles,1.0,,0.0
+72181,Mission-Monthéard,1.0,,0.0
+72181,Nord-Gare,1.0,,0.0
+72181,Oasis-Maroc,1.0,,0.0
+72181,Ouest,1.0,,0.0
+72181,Pin-Vert Galant,1.0,,0.0
+72181,Pontlieue-Rocade,1.0,,0.0
+72181,Prémartine,1.0,,0.0
+72181,Ronceray-Glonnières,1.0,,0.0
+72181,Rubillard-Chasse Royale,1.0,,0.0
+72181,République,1.0,,0.0
+72181,Sablons Est,1.0,,0.0
+72181,Sablons-Newton,1.0,,0.0
+72181,Saint-Aubin,1.0,,0.0
+72181,Vallée Saint-Blaise,1.0,,0.0
+72181,Vauguyon,1.0,,0.0
+72181,Villaret-Meslier,1.0,,0.0
+72181,Z.A. Nord,1.0,,0.0
+72181,Z.A. Novaxis,1.0,,0.0
+72181,Z.A. Z.I.S.,1.0,,0.0
+72181,Z.A. Zone commerciale sud,1.0,,0.0
+72181,Étangs Chauds,1.0,,0.0
+74010,Annecy-le-Vieux Est,1.043,OLL L7400,1.0
+74010,Annecy-le-Vieux Nord,1.005,OLL L7400,1.0
+74010,Annecy-le-Vieux Sud,1.043,OLL L7400,1.0
+74010,Centre Ville,1.043,OLL L7400,1.0
+74010,Cran-Gevrier-Centre Ville-Le Vernay-Les îles,0.968,OLL L7400,1.0
+74010,Cran-Gevrier-Le Vallon-Le Jourdil-Renoir,0.968,OLL L7400,1.0
+74010,Cran-Gevrier-Taillefer-Alery-Vert Bois,0.968,OLL L7400,1.0
+74010,Meythet,0.968,OLL L7400,1.0
+74010,Novel,1.005,OLL L7400,1.0
+74010,Parc des Sports,0.968,OLL L7400,1.0
+74010,Parmelan-Albigny,1.043,OLL L7400,1.0
+74010,Pringy,0.968,OLL L7400,1.0
+74010,Quartier Sud,0.998,OLL L7400,1.0
+74010,Romains,1.043,OLL L7400,1.0
+74010,Seynod Centre,0.968,OLL L7400,1.0
+74010,Seynod Périphérie,0.968,OLL L7400,1.0
+75056,Amérique,0.836,encadrement Paris,1.0
+75056,Arsenal,1.128,encadrement Paris,1.0
+75056,Arts et Métiers,1.09,encadrement Paris,1.0
+75056,Auteuil,1.028,encadrement Paris,1.0
+75056,Batignolles,0.998,encadrement Paris,1.0
+75056,Bel Air,0.899,encadrement Paris,1.0
+75056,Belleville,0.958,encadrement Paris,1.0
+75056,Bercy,0.899,encadrement Paris,1.0
+75056,Bonne Nouvelle,1.09,encadrement Paris,1.0
+75056,Chaillot,1.114,encadrement Paris,1.0
+75056,Champs Élysées,1.128,encadrement Paris,1.0
+75056,Chapelle,0.836,encadrement Paris,1.0
+75056,Charonne,0.836,encadrement Paris,1.0
+75056,Chaussée d’Antin,1.128,encadrement Paris,1.0
+75056,Clignancourt,0.956,encadrement Paris,1.0
+75056,Combat,0.899,encadrement Paris,1.0
+75056,Croulebarbe,1.029,encadrement Paris,1.0
+75056,Ecole Militaire,1.223,encadrement Paris,1.0
+75056,Enfants Rouges,1.09,encadrement Paris,1.0
+75056,Europe,1.114,encadrement Paris,1.0
+75056,Faubourg Montmartre,1.029,encadrement Paris,1.0
+75056,Faubourg du Roule,1.128,encadrement Paris,1.0
+75056,Folie Méricourt,0.958,encadrement Paris,1.0
+75056,Gaillon,1.128,encadrement Paris,1.0
+75056,Gare,0.836,encadrement Paris,1.0
+75056,Goutte d’Or,0.958,encadrement Paris,1.0
+75056,Grandes Carrières,0.956,encadrement Paris,1.0
+75056,Grenelle,1.028,encadrement Paris,1.0
+75056,Gros Caillou,1.223,encadrement Paris,1.0
+75056,Hôpital Saint-Louis,0.958,encadrement Paris,1.0
+75056,Invalides,1.223,encadrement Paris,1.0
+75056,Jardin des Plantes,0.998,encadrement Paris,1.0
+75056,Javel,1.028,encadrement Paris,1.0
+75056,Les Archives,1.09,encadrement Paris,1.0
+75056,Les Halles,1.029,encadrement Paris,1.0
+75056,Madeleine,1.128,encadrement Paris,1.0
+75056,Mail,1.09,encadrement Paris,1.0
+75056,Maison Blanche,0.979,encadrement Paris,1.0
+75056,Monnaie,1.128,encadrement Paris,1.0
+75056,Montparnasse,1.029,encadrement Paris,1.0
+75056,Muette,1.114,encadrement Paris,1.0
+75056,Necker,1.069,encadrement Paris,1.0
+75056,Notre Dame,1.128,encadrement Paris,1.0
+75056,Notre Dame des Champs,1.223,encadrement Paris,1.0
+75056,Odéon,1.128,encadrement Paris,1.0
+75056,Palais Royal,1.128,encadrement Paris,1.0
+75056,Parc de Montsouris,0.958,encadrement Paris,1.0
+75056,Petit Montrouge,0.998,encadrement Paris,1.0
+75056,Picpus,0.956,encadrement Paris,1.0
+75056,Place Vendome,1.128,encadrement Paris,1.0
+75056,Plaine Monceau,1.069,encadrement Paris,1.0
+75056,Plaisance,0.979,encadrement Paris,1.0
+75056,Pont de Flandre,0.836,encadrement Paris,1.0
+75056,Porte Dauphine,1.114,encadrement Paris,1.0
+75056,Porte Saint-Denis,1.029,encadrement Paris,1.0
+75056,Porte Saint-Martin,0.958,encadrement Paris,1.0
+75056,Père Lachaise,0.899,encadrement Paris,1.0
+75056,Quinze Vingts,0.958,encadrement Paris,1.0
+75056,Rochechouart,1.029,encadrement Paris,1.0
+75056,Roquette,0.958,encadrement Paris,1.0
+75056,Saint Germain des Prés,1.128,encadrement Paris,1.0
+75056,Saint Thomas d’Aquin,1.223,encadrement Paris,1.0
+75056,Saint-Ambroise,0.998,encadrement Paris,1.0
+75056,Saint-Fargeau,0.836,encadrement Paris,1.0
+75056,Saint-Georges,1.029,encadrement Paris,1.0
+75056,Saint-Germain-l'Auxerrois,1.128,encadrement Paris,1.0
+75056,Saint-Gervais,1.09,encadrement Paris,1.0
+75056,Saint-Lambert,0.991,encadrement Paris,1.0
+75056,Saint-Merri,1.128,encadrement Paris,1.0
+75056,Saint-Victor,1.09,encadrement Paris,1.0
+75056,Saint-Vincent-de-Paul,1.029,encadrement Paris,1.0
+75056,Sainte-Avoye,1.09,encadrement Paris,1.0
+75056,Sainte-Marguerite,0.998,encadrement Paris,1.0
+75056,Salpetrière,0.998,encadrement Paris,1.0
+75056,Sorbonne,1.09,encadrement Paris,1.0
+75056,Ternes,1.069,encadrement Paris,1.0
+75056,Val de Grace,1.09,encadrement Paris,1.0
+75056,Villette,0.836,encadrement Paris,1.0
+75056,Vivienne,1.09,encadrement Paris,1.0
+75056,Épinettes,0.958,encadrement Paris,1.0
+76351,Anatole France-Danton,1.0,,0.0
+76351,Aplemont,1.0,,0.0
+76351,Arcole-Brindeau,1.0,,0.0
+76351,Bleville,1.0,,0.0
+76351,Bois de Bleville,1.0,,0.0
+76351,Caucriauville,1.0,,0.0
+76351,Centre Ville,1.0,,0.0
+76351,Côte Est-Soquence,1.0,,0.0
+76351,Côte Ouest-Ormeaux,1.0,,0.0
+76351,Dollemard,1.0,,0.0
+76351,Eure,1.0,,0.0
+76351,Graville,1.0,,0.0
+76351,Le Port,1.0,,0.0
+76351,Les Neiges,1.0,,0.0
+76351,Mare Rouge,1.0,,0.0
+76351,Mare au Clerc,1.0,,0.0
+76351,Mont Gaillard,1.0,,0.0
+76351,Points Cardinaux,1.0,,0.0
+76351,Rouelles,1.0,,0.0
+76351,Saint-Vincent,1.0,,0.0
+76351,Sainte-Cécile,1.0,,0.0
+76351,Sainte-Marie-Saint-Leon,1.0,,0.0
+76351,Sanvic,1.0,,0.0
+76351,Tourneville,1.0,,0.0
+76351,Vallée Béreult,1.0,,0.0
+76540,Centre Rive Droite Est,1.0,,0.0
+76540,Centre Rive Droite Ouest,1.0,,0.0
+76540,Centre Rive Gauche,1.0,,0.0
+76540,Chatelet Lombardie,1.0,,0.0
+76540,Coteaux Nord,1.0,,0.0
+76540,Grand Mare,1.0,,0.0
+76540,Quartiers Est,1.0,,0.0
+76540,Quartiers Ouest,1.0,,0.0
+76540,Saint-Clément-Jardin des Plantes,1.0,,0.0
+76540,Sapins,1.0,,0.0
+80021,Amiens II-La Vallée,1.0,,0.0
+80021,Amiens Nord,1.0,,0.0
+80021,Amiens-Val d'Avre,1.0,,0.0
+80021,Centre Ville,1.0,,0.0
+80021,Faubourg de Hem,1.0,,0.0
+80021,Henriville,1.0,,0.0
+80021,Longpre,1.0,,0.0
+80021,Marivaux,1.0,,0.0
+80021,Montières,1.0,,0.0
+80021,Petit Saint-Jean,1.0,,0.0
+80021,Plein Sud,1.0,,0.0
+80021,Renancourt,1.0,,0.0
+80021,Saint-Acheul,1.0,,0.0
+80021,Saint-Germain,1.0,,0.0
+80021,Saint-Honoré-Jeanne d’Arc,1.0,,0.0
+80021,Saint-Jacques-Saint-Roch,1.0,,0.0
+80021,Saint-Ladre,1.0,,0.0
+80021,Saint-Leu,1.0,,0.0
+80021,Saint-Maurice,1.0,,0.0
+80021,Saint-Pierre,1.0,,0.0
+80021,Sainte-Anne-Faubourg Noyon,1.0,,0.0
+80021,Sud Est,1.0,,0.0
+80021,Étouvie,1.0,,0.0
+83137,Canton 1,0.981,OLL L8300,1.0
+83137,Canton 2,1.003,OLL L8300,1.0
+83137,Canton 3,1.006,OLL L8300,1.0
+83137,Canton 4,0.991,OLL L8300,1.0
+83137,Canton 5,0.981,OLL L8300,1.0
+83137,Canton 6,1.011,OLL L8300,1.0
+83137,Canton 7,1.006,OLL L8300,1.0
+83137,Canton 8,1.011,OLL L8300,1.0
+83137,Canton 9,0.981,OLL L8300,1.0
+87085,Grand Quartier 1,1.0,,0.0
+87085,Grand Quartier 10,1.0,,0.0
+87085,Grand Quartier 11,1.0,,0.0
+87085,Grand Quartier 12,1.0,,0.0
+87085,Grand Quartier 13,1.0,,0.0
+87085,Grand Quartier 14,1.0,,0.0
+87085,Grand Quartier 15,1.0,,0.0
+87085,Grand Quartier 16,1.0,,0.0
+87085,Grand Quartier 17,1.0,,0.0
+87085,Grand Quartier 18,1.0,,0.0
+87085,Grand Quartier 19,1.0,,0.0
+87085,Grand Quartier 2,1.0,,0.0
+87085,Grand Quartier 20,1.0,,0.0
+87085,Grand Quartier 3,1.0,,0.0
+87085,Grand Quartier 4,1.0,,0.0
+87085,Grand Quartier 5,1.0,,0.0
+87085,Grand Quartier 6,1.0,,0.0
+87085,Grand Quartier 7,1.0,,0.0
+87085,Grand Quartier 8,1.0,,0.0
+87085,Grand Quartier 9,1.0,,0.0
+92004,Alma-Philosophes,1.0,,1.0
+92004,Becon-Flachat,1.0,,1.0
+92004,Champs-Magenta,1.0,,1.0
+92004,Gresillons,1.0,,1.0
+92004,Mairie,1.0,,1.0
+92004,Nord,1.0,,1.0
+92004,Renoir-Metro,1.0,,1.0
+92012,Centre Ville,1.0,,1.0
+92012,Denfert-Rochereau,1.0,,1.0
+92012,Maréchal Juin,1.0,,1.0
+92012,Pierre Grenier,1.0,,1.0
+92012,Renault,1.0,,1.0
+92012,Salle des Fêtes,1.0,,1.0
+92012,X,1.0,,1.0
+92025,Europe-Gare du Stade-Fossés Jean,1.0,,1.0
+92025,Les Grèves-Plateau-Moslard,1.0,,1.0
+92025,Petit Colombes,1.0,,1.0
+92025,Wiener-Centre Ville-Champarons,1.0,,1.0
+92050,Grand Quartier 1,1.0,,1.0
+92050,Grand Quartier 2,1.0,,1.0
+92050,Grand Quartier 3,1.0,,1.0
+92050,Grand Quartier 4,1.0,,1.0
+92050,Grand Quartier 5,1.0,,1.0
+92050,Grand Quartier 6,1.0,,1.0
+92050,Grand Quartier 7,1.0,,1.0
+92050,Grand Quartier 8,1.0,,1.0
+93048,Bas Montreuil Est,1.0,,1.0
+93048,Bas Montreuil Ouest,1.0,,1.0
+93048,Bel-Air Grands Pêchers,1.0,,1.0
+93048,Branly Boissière,1.0,,1.0
+93048,Centre Ville Jean Moulin Espoir,1.0,,1.0
+93048,La Noue Clos Francais Guilands,1.0,,1.0
+93048,Montreau Ruffins Clos Arachis,1.0,,1.0
+93048,Paul Signac-Murs à pêches,1.0,,1.0
+93048,Ramenas Fabien Lagrange,1.0,,1.0
+93048,Solidarité Carnot,1.0,,1.0
+93048,Villiers Barbusse,1.0,,1.0
+93066,Allende,1.0,,1.0
+93066,Centre-ville-Basilique,1.0,,1.0
+93066,Courtille Saussaie Floreal,1.0,,1.0
+93066,Delaunay-Belleville,1.0,,1.0
+93066,Franc-Moisin Bel-Air,1.0,,1.0
+93066,Joliot Curie-Cosmonautes,1.0,,1.0
+93066,Mutuelle champ de courses,1.0,,1.0
+93066,Plaine,1.0,,1.0
+93066,Pleyel,1.0,,1.0
+93066,Péri Langevin Stalingrad Politzer,1.0,,1.0
+93066,République-Gare-Porte de Paris,1.0,,1.0
+93066,Semard Delaune Guynemer,1.0,,1.0
+94028,Bordières,1.0,,1.0
+94028,Centre Ancien,1.0,,1.0
+94028,Le Mont-Mesly,1.0,,1.0
+94028,Nouvelle Ville,1.0,,1.0
+94081,Canton Est,1.0,,1.0
+94081,Canton Nord,1.0,,1.0
+94081,Canton Ouest,1.0,,1.0
+95018,Centre Ville Nord,1.0,,1.0
+95018,Centre Ville Sud,1.0,,1.0
+95018,Champioux Prunet,1.0,,1.0
+95018,Jolival La Colonie,1.0,,1.0
+95018,Marais Pont Neuf,1.0,,1.0
+95018,Nonaise Douce Fève,1.0,,1.0
+95018,Orgemont Vaucelle,1.0,,1.0
+95018,Val d'Argent Nord,1.0,,1.0
+95018,Val d'Argent Sud,1.0,,1.0
+95018,Vilembert Mazagran,1.0,,1.0
+97411,Saint-Denis-Grand Quartier 1,1.087,OLL L9740,0.86
+97411,Saint-Denis-Grand Quartier 10,0.922,OLL L9740,0.86
+97411,Saint-Denis-Grand Quartier 11,0.899,OLL L9740,0.86
+97411,Saint-Denis-Grand Quartier 12,1.088,OLL L9740,0.86
+97411,Saint-Denis-Grand Quartier 13,0.96,OLL L9740,0.86
+97411,Saint-Denis-Grand Quartier 2,1.13,OLL L9740,0.86
+97411,Saint-Denis-Grand Quartier 3,1.065,OLL L9740,0.86
+97411,Saint-Denis-Grand Quartier 4,1.004,OLL L9740,0.86
+97411,Saint-Denis-Grand Quartier 5,0.882,OLL L9740,0.86
+97411,Saint-Denis-Grand Quartier 6,0.93,OLL L9740,0.86
+97411,Saint-Denis-Grand Quartier 7,0.965,OLL L9740,0.86
+97411,Saint-Denis-Grand Quartier 8,0.93,OLL L9740,0.86
+97411,Saint-Denis-Grand Quartier 9,1.013,OLL L9740,0.86
+97415,Saint-Paul-Grand Quartier 1,1.092,OLL L9740,0.81
+97415,Saint-Paul-Grand Quartier 10,1.052,OLL L9740,0.81
+97415,Saint-Paul-Grand Quartier 11,1.012,OLL L9740,0.81
+97415,Saint-Paul-Grand Quartier 12,1.092,OLL L9740,0.81
+97415,Saint-Paul-Grand Quartier 13,1.092,OLL L9740,0.81
+97415,Saint-Paul-Grand Quartier 14,0.954,OLL L9740,0.81
+97415,Saint-Paul-Grand Quartier 15,0.945,OLL L9740,0.81
+97415,Saint-Paul-Grand Quartier 16,0.917,OLL L9740,0.81
+97415,Saint-Paul-Grand Quartier 17,0.917,OLL L9740,0.81
+97415,Saint-Paul-Grand Quartier 2,1.004,OLL L9740,0.81
+97415,Saint-Paul-Grand Quartier 3,1.092,OLL L9740,0.81
+97415,Saint-Paul-Grand Quartier 4,0.994,OLL L9740,0.81
+97415,Saint-Paul-Grand Quartier 5,0.917,OLL L9740,0.81
+97415,Saint-Paul-Grand Quartier 6,0.935,OLL L9740,0.81
+97415,Saint-Paul-Grand Quartier 7,0.917,OLL L9740,0.81
+97415,Saint-Paul-Grand Quartier 8,0.972,OLL L9740,0.81
+97415,Saint-Paul-Grand Quartier 9,0.877,OLL L9740,0.81
