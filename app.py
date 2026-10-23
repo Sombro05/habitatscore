@@ -259,15 +259,16 @@ if page == "Analyser un bien":
                 vacance     = row.get("vacance_locative")
                 texte_vac   = f"{vacance:.0%}".replace(".", ",") if pd.notna(vacance) else "inconnue"
                 rotation    = row.get("rotation")
-                texte_rot   = f"{rotation:.1%}".replace(".", ",") if pd.notna(rotation) else "inconnu"
+                texte_rot   = (f"{rotation:.1%}".replace(".", ",") + " des logements vendus par an"
+                               if pd.notna(rotation) else "N/D (ventes non publiées, coefficient 1)")
                 c_rdt, c_loy = st.columns(2)
                 c_rdt.metric("Rendement ajusté", f"{fmt(res['rdt_ajuste'], 2)} %",
                              f"{delta_rdt:+.2f}".replace(".", ",") + f" pt vs ville ({fmt(res['rdt_neutre'], 2)} %)", border=True,
                              help=f"Rendement brut {fmt(res['rdt_brut'], 2)} % × coefficient de vacance "
                                   f"{fmt(res['coef_vacance'], 2)} × coefficient de rotation {fmt(res['coef_rotation'], 2)}. "
                                   f"Vacance locative : {texte_vac} (vides / (vides + loués), INSEE 2021) ; au-delà "
-                                  f"de 30 %, chaque point retire 1 % au loyer. Taux de rotation : {texte_rot} des "
-                                  f"logements vendus par an ; sous 1,5 %, chaque pourcent d'écart au seuil retire 2 % au "
+                                  f"de 30 %, chaque point retire 1 % au loyer. Taux de rotation : {texte_rot} ; "
+                                  f"sous 1,5 %, chaque pourcent d'écart au seuil retire 1 % au "
                                   f"rendement, jusqu'à −75 % (marché quasi inexistant).")
                 c_loy.metric("Loyer vs marché", f"{fmt(loyer)} €",
                              f"{fmt(delta_loyer)} € / mois", border=True)

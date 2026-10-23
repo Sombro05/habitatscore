@@ -4,12 +4,14 @@ Taux de rotation par commune : part des logements vendus chaque année (marché 
 Taux de rotation = ventes DVF (maisons + appartements, 3 ans) / 3 / logements INSEE 2021
 Coefficient de rotation (appliqué au rendement, comme le coefficient de vacance) :
     coef = max(PLANCHER, 1 − PENTE × max(0, (SEUIL − rotation) / SEUIL))
-Sous 1,5 % de logements vendus par an, chaque pourcent d'écart au seuil retire 2 % au
-rendement, jusqu'à −75 % au maximum (plancher 0,25, atteint vers 0,94 %/an) :
+Sous 1,5 % de logements vendus par an, chaque pourcent d'écart au seuil retire 1 % au
+rendement, jusqu'à −75 % au maximum (plancher 0,25, atteint à 0,375 %/an) :
 - la faible rotation pèse sur la revente, pas sur les loyers encaissés (le risque locatif
   est déjà compté par le coefficient de vacance) : le rendement ne tombe pas à 0 ;
 - sous le plancher, les communes ont surtout 0 à 2 ventes en 3 ans : la mesure n'y est
   plus fiable (une vente de plus ou de moins = ±50 à 100 %), on cesse de les différencier.
+Rotation inconnue (N/D, coefficient 1) là où DVF ne publie pas les ventes : Alsace-Moselle
+(Livre foncier) et Mayotte. Ne pas confondre avec « aucune vente », qui est une information.
 
 Entrées : dvf_clean.parquet, vacance_communes.csv (16_prep_vacance.py)
 Sortie : rotation_communes.csv (anciennes communes fusionnées incluses)
@@ -17,7 +19,8 @@ Sortie : rotation_communes.csv (anciennes communes fusionnées incluses)
 import pandas as pd
 
 SEUIL = 0.015            # 1,5 % des logements vendus par an
-PENTE = 2                # % de rendement retiré par % d'écart relatif au seuil
+PENTE = 1                # % de rendement retiré par % d'écart relatif au seuil
+DEPTS_SANS_DVF = ("57", "67", "68", "976")  # ventes non publiées dans DVF
 PLANCHER = 0.25          # coefficient minimal (marché quasi inexistant)
 NB_ANNEES = 3            # ventes DVF 2023-2025
 
@@ -31,7 +34,10 @@ actuelles = actuelles.merge(ventes, left_on="code_commune", right_index=True, ho
 actuelles["ventes_3ans"] = actuelles["ventes_3ans"].fillna(0).astype(int)
 actuelles["rotation"] = (actuelles["ventes_3ans"] / NB_ANNEES / actuelles["logements"]).where(
     actuelles["logements"] > 0).round(4)
-actuelles["coef_rotation"] = (1 - PENTE * ((SEUIL - actuelles["rotation"]) / SEUIL).clip(lower=0)).clip(lower=PLANCHER).round(4)
+sans_dvf = actuelles["code_commune"].str.startswith(DEPTS_SANS_DVF)
+actuelles.loc[sans_dvf, ["ventes_3ans", "rotation"]] = None   # inconnu, pas « 0 vente »
+actuelles["coef_rotation"] = ((1 - PENTE * ((SEUIL - actuelles["rotation"]) / SEUIL).clip(lower=0))
+                              .clip(lower=PLANCHER).fillna(1.0).round(4))
 
 # Toutes les communes (anciennes comprises) reprennent les valeurs de leur commune actuelle
 rot = vac[["code_commune", "code_commune_2023"]].merge(
