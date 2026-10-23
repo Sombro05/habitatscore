@@ -19,7 +19,7 @@ from shapely.geometry import mapping, shape
 from shapely.ops import unary_union
 
 SEUIL_VACANCE = 0.30  # identique à 16_prep_vacance.py
-SEUIL_ROTATION, PENTE, PLANCHER = 0.015, 2, 0.25  # identiques à 19_prep_rotation.py
+SEUIL_ROTATION, PENTE, PLANCHER = 0.015, 1, 0.25  # identiques à 19_prep_rotation.py
 
 def arrondir(coords, decimales=4):
     if isinstance(coords[0], (int, float)):

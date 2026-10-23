@@ -267,7 +267,7 @@ if page == "Analyser un bien":
                                   f"{fmt(res['coef_vacance'], 2)} × coefficient de rotation {fmt(res['coef_rotation'], 2)}. "
                                   f"Vacance locative : {texte_vac} (vides / (vides + loués), INSEE 2021) ; au-delà "
                                   f"de 30 %, chaque point retire 1 % au loyer. Taux de rotation : {texte_rot} des "
-                                  f"logements vendus par an ; sous 1,5 %, chaque pourcent d'écart au seuil retire 2 % au "
+                                  f"logements vendus par an ; sous 1,5 %, chaque pourcent d'écart au seuil retire 1 % au "
                                   f"rendement, jusqu'à −75 % (marché quasi inexistant).")
                 c_loy.metric("Loyer vs marché", f"{fmt(loyer)} €",
                              f"{fmt(delta_loyer)} € / mois", border=True)

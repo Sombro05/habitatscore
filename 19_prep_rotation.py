@@ -4,8 +4,8 @@ Taux de rotation par commune : part des logements vendus chaque année (marché 
 Taux de rotation = ventes DVF (maisons + appartements, 3 ans) / 3 / logements INSEE 2021
 Coefficient de rotation (appliqué au rendement, comme le coefficient de vacance) :
     coef = max(PLANCHER, 1 − PENTE × max(0, (SEUIL − rotation) / SEUIL))
-Sous 1,5 % de logements vendus par an, chaque pourcent d'écart au seuil retire 2 % au
-rendement, jusqu'à −75 % au maximum (plancher 0,25, atteint vers 0,94 %/an) :
+Sous 1,5 % de logements vendus par an, chaque pourcent d'écart au seuil retire 1 % au
+rendement, jusqu'à −75 % au maximum (plancher 0,25, atteint vers 0,375 %/an) :
 - la faible rotation pèse sur la revente, pas sur les loyers encaissés (le risque locatif
   est déjà compté par le coefficient de vacance) : le rendement ne tombe pas à 0 ;
 - sous le plancher, les communes ont surtout 0 à 2 ventes en 3 ans : la mesure n'y est
@@ -17,7 +17,7 @@ Sortie : rotation_communes.csv (anciennes communes fusionnées incluses)
 import pandas as pd
 
 SEUIL = 0.015            # 1,5 % des logements vendus par an
-PENTE = 2                # % de rendement retiré par % d'écart relatif au seuil
+PENTE = 1                # % de rendement retiré par % d'écart relatif au seuil
 PLANCHER = 0.25          # coefficient minimal (marché quasi inexistant)
 NB_ANNEES = 3            # ventes DVF 2023-2025
 
