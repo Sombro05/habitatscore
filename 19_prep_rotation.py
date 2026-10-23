@@ -5,7 +5,7 @@ Taux de rotation = ventes DVF (maisons + appartements, 3 ans) / 3 / logements IN
 Coefficient de rotation (appliqué au rendement, comme le coefficient de vacance) :
     coef = max(PLANCHER, 1 − PENTE × max(0, (SEUIL − rotation) / SEUIL))
 Sous 1,5 % de logements vendus par an, chaque pourcent d'écart au seuil retire 1 % au
-rendement, jusqu'à −75 % au maximum (plancher 0,25, atteint à 0,375 %/an) :
+rendement, jusqu'à −50 % au maximum (plancher 0,5, atteint à 0,75 %/an) :
 - la faible rotation pèse sur la revente, pas sur les loyers encaissés (le risque locatif
   est déjà compté par le coefficient de vacance) : le rendement ne tombe pas à 0 ;
 - sous le plancher, les communes ont surtout 0 à 2 ventes en 3 ans : la mesure n'y est
@@ -21,7 +21,7 @@ import pandas as pd
 SEUIL = 0.015            # 1,5 % des logements vendus par an
 PENTE = 1                # % de rendement retiré par % d'écart relatif au seuil
 DEPTS_SANS_DVF = ("57", "67", "68", "976")  # ventes non publiées dans DVF
-PLANCHER = 0.25          # coefficient minimal (marché quasi inexistant)
+PLANCHER = 0.5           # coefficient minimal (marché quasi inexistant)
 NB_ANNEES = 3            # ventes DVF 2023-2025
 
 ventes = (pd.read_parquet("dvf_clean.parquet", columns=["code_commune"])

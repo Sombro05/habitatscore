@@ -22,7 +22,7 @@ from shapely.ops import unary_union
 from scoring import loyer_hors_charges
 
 SEUIL_VACANCE = 0.30  # identique à 16_prep_vacance.py
-SEUIL_ROTATION, PENTE, PLANCHER = 0.015, 1, 0.25  # identiques à 19_prep_rotation.py
+SEUIL_ROTATION, PENTE, PLANCHER = 0.015, 1, 0.5  # identiques à 19_prep_rotation.py
 
 def arrondir(coords, decimales=4):
     if isinstance(coords[0], (int, float)):
